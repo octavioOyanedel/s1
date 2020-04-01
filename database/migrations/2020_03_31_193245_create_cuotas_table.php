@@ -20,8 +20,8 @@ class CreateCuotasTable extends Migration
             $table->date('fecha');
             $table->unsignedInteger('numero');
             $table->unsignedInteger('monto');
-            $table->unsignedInteger('prestamo_id');
-            $table->unsignedInteger('estado_id');
+            $table->unsignedInteger('prestamo_id'); //cascade
+            $table->unsignedInteger('estado_id'); //restrict
             $table->timestamps();
         });
     }

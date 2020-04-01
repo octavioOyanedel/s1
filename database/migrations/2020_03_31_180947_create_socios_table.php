@@ -24,20 +24,20 @@ class CreateSociosTable extends Migration
             $table->string('apellido2')->nullable();
             $table->enum('genero', array('Varón', 'Dama'));
             $table->date('fecha_nac')->nullable();
-            $table->unsignedInteger('celular')->nullable();
+            $table->unsignedInteger('celular')->nullable(); 
             $table->string('correo')->nullable();
-            $table->unsignedInteger('comuna_id')->nullable();
-            $table->unsignedInteger('urbe_id')->nullable();            
+            $table->unsignedInteger('comuna_id')->nullable(); //set null
+            $table->unsignedInteger('urbe_id')->nullable(); //set null            
             $table->string('direccion')->nullable();
-            $table->unsignedInteger('ciudadania_id')->nullable();
+            $table->unsignedInteger('ciudadania_id')->nullable(); //set null
             $table->date('fecha_pucv')->nullable();
-            $table->unsignedInteger('sede_id');
-            $table->unsignedInteger('area_id');
-            $table->unsignedInteger('cargo_id');
+            $table->unsignedInteger('sede_id')->nullable(); //set null
+            $table->unsignedInteger('area_id')->nullable(); //set null
+            $table->unsignedInteger('cargo_id')->nullable(); //set null
             $table->unsignedInteger('anexo')->nullable();
             $table->date('fecha_sind1')->nullable();
             $table->unsignedInteger('numero')->nullable();
-            $table->unsignedInteger('categoria_id')->nullable();
+            $table->unsignedInteger('categoria_id'); //restrict
             $table->softDeletes();
             $table->timestamps();
         });

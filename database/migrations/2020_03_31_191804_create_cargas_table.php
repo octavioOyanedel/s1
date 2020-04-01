@@ -21,8 +21,8 @@ class CreateCargasTable extends Migration
             $table->string('nombre2')->nullable();
             $table->string('apellido1');
             $table->string('apellido2')->nullable();
-            $table->unsignedInteger('parentesco_id');
-            $table->unsignedInteger('socio_id');
+            $table->unsignedInteger('parentesco_id'); //restrict
+            $table->unsignedInteger('socio_id'); //cascade
             $table->timestamps();
         });
     }

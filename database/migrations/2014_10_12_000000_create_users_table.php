@@ -14,7 +14,9 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
+            $table->increments('id');
             $table->string('nombre1');
             $table->string('nombre2')->nullable();
             $table->string('apellido1');
@@ -22,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedInteger('privilegio_id');
+            $table->unsignedInteger('privilegio_id'); //restrict
             $table->rememberToken();
             $table->timestamps();
         });

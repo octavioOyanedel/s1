@@ -18,8 +18,8 @@ class CreateEstudiosTable extends Migration
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');
             $table->string('titulo')->nullable();
-            $table->unsignedInteger('grado_id');
-            $table->unsignedInteger('socio_id');
+            $table->unsignedInteger('grado_id')->nullable(); //set null
+            $table->unsignedInteger('socio_id'); //cascade
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@ class CreateLogsTable extends Migration
             $table->string('ip');
             $table->string('navegador');
             $table->string('sistema');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id'); //restrict
             $table->timestamps();
         });
     }

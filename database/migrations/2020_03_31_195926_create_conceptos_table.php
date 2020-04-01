@@ -17,10 +17,10 @@ class CreateConceptosTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');    
-            $table->unsignedInteger('socio_id')->nullable();
-            $table->unsignedInteger('criterio_id');
-            $table->unsignedInteger('consejero_id')->nullable();
-            $table->unsignedInteger('externo_id')->nullable();
+            $table->unsignedInteger('socio_id')->nullable(); //set null
+            $table->unsignedInteger('criterio_id'); //restrict
+            $table->unsignedInteger('consejero_id')->nullable(); //set null
+            $table->unsignedInteger('externo_id')->nullable(); //set null
             $table->timestamps();
         });
     }

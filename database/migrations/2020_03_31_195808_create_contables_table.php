@@ -18,11 +18,12 @@ class CreateContablesTable extends Migration
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');
             $table->date('fecha');
-            $table->unsignedInteger('concepto_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('banca_id'); //restrict          
+            $table->unsignedInteger('concepto_id'); //restrict
+            $table->unsignedInteger('user_id'); //restrict
             $table->unsignedInteger('monto');
             $table->unsignedInteger('registro');
-            $table->unsignedInteger('tipo_id');
+            $table->unsignedInteger('tipo_id'); //restrict
             $table->string('cheque');
             $table->string('detalle');
             $table->timestamps();
