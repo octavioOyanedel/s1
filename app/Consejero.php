@@ -12,6 +12,6 @@ class Consejero extends Model
     * @var array
     */
     protected $fillable = [
-        'nombre',
+        'nombre','concepto'
     ];
 }

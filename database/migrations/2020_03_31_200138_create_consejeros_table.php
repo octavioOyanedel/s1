@@ -17,7 +17,8 @@ class CreateConsejerosTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('concepto');            
+            $table->string('nombre')->nullable();
             $table->timestamps();
         });
     }

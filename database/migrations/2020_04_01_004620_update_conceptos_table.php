@@ -17,7 +17,6 @@ class UpdateConceptosTable extends Migration
             $table->foreign('socio_id')->references('id')->on('socios')->onUpdate('cascade')->onDelete('set null');
             $table->foreign('criterio_id')->references('id')->on('criterios')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('consejero_id')->references('id')->on('consejeros')->onUpdate('cascade')->onDelete('set null');
-            $table->foreign('externo_id')->references('id')->on('externos')->onUpdate('cascade')->onDelete('set null');
         });
     }
 

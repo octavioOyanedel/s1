@@ -17,7 +17,7 @@ class CreateBancasTable extends Migration
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
             $table->increments('id'); 
-            $table->unsignedInteger('numero');
+            $table->string('numero');
             $table->unsignedInteger('cuenta_id')->nullable(); //set null
             $table->unsignedInteger('banco_id')->nullable(); //set null
             $table->timestamps();
