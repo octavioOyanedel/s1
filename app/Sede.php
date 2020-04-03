@@ -14,4 +14,15 @@ class Sede extends Model
     protected $fillable = [
         'nombre',
     ];
+
+
+    /**
+     * Relación hasMany
+     * Una sede tiene/posee muchos/as áreas
+     */
+    public function areas()
+    {
+        return $this->hasMany(Area::class);
+    }
+    
 }

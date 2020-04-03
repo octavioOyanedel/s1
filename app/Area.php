@@ -12,6 +12,16 @@ class Area extends Model
     * @var array
     */
     protected $fillable = [
-        'nombre',
+        'nombre','sede_id',
     ];
+
+    /**
+     * Relación belongsTo
+     * Esta/e área pertenece a un/a sede
+     */
+    public function sede()
+    {
+        return $this->belongsTo('App\Sede');
+    }
+    
 }
