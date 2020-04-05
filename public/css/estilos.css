@@ -13,6 +13,13 @@ nav, input, select, option, td, li, a {
 }
 
 /*
+ * Deshabilitar ajuste de linea en celdas de tabla
+ */
+table tbody td, table thead th{
+    white-space: nowrap !important;
+}
+
+/*
  * Contenedor circular logo nav
  */
 .navbar-brand{
@@ -47,6 +54,27 @@ div.dropdown-menu{
  */
 .dropdown-item:hover{
 	color: #fff !important;
+}
+
+/*
+ * Centrar enlaces de paginación
+ */
+ul.pagination {
+    justify-content: center !important;
+}
+
+/*
+ * Color hover filas de tabla
+ */
+table tbody tr:hover{
+    background-color: #cfd8dc !important;
+}
+
+/*
+ * Tamaño icono excel
+ */
+.excel{
+    font-size: 26px;
 }
 
 /*

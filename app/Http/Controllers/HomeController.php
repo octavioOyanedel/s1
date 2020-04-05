@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Socio;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $socios = Socio::orderBy('created_at')->paginate(10);
+        return view('home', compact('socios'));
     }
 }
