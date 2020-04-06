@@ -25,7 +25,20 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $total = 1;
-        $coleccion = Socio::orderBy('created_at')->paginate(10);
+        
+        $cantidad = obtenerCantidad($request);
+        $columna = obtenerColumna($request);
+        $orden = obtenerOrden($request);
+        $campo = obtenerCampo($request);
+
+        $coleccion = Socio::orderBy($columna, $orden)
+        ->apellido1($campo)
+        ->paginate($cantidad)->appends([
+            'campo' => $campo,
+            'cantidad' => $cantidad,
+            'columna' => $columna,
+            'orden' => $orden,
+        ]);
         return view('home', compact('coleccion','total'));
     }
 }

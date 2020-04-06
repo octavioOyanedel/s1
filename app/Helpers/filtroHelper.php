@@ -16,7 +16,6 @@ function obtenerCamposParaFiltro($nombre)
 	}
 }
 
-
 /**
  * Descripción: obtener cantidades para filtrado
  * Entrada/s: nombre de tabla
