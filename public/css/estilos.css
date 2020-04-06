@@ -74,7 +74,33 @@ table tbody tr:hover{
  * Tamaño icono excel
  */
 .excel{
-    font-size: 26px;
+    font-size: 20px;
+}
+
+/*
+ * Grid filtro
+ */
+.contenedor-filtro{
+    display: grid;
+    grid-template-columns: 1fr auto auto auto auto;
+    align-items: center;
+}
+
+/*
+ * Quitar margen a botón filtro
+ */
+.contenedor-filtro .boton button{    
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+/*
+ * Agregar margen a la derecha en elementos de filtro
+ */
+.contenedor-filtro .cantidad,
+.contenedor-filtro .campo,
+.contenedor-filtro .orden{
+    margin-right: 5px;
 }
 
 /*
@@ -85,5 +111,39 @@ table tbody tr:hover{
         margin-left: 0px !important;
         margin-right: 0px !important;
         width: 100% !important;
+    }
+}
+
+/*
+ * Media query filtro
+ */
+@media (max-width: 768px) {
+    /*
+    * Redimensión de elementos del filtro
+    */
+    .contenedor-filtro .exportar,
+    .contenedor-filtro .cantidad,
+    .contenedor-filtro .campo,
+    .contenedor-filtro .orden,
+    .contenedor-filtro .boton{    
+        grid-column: 1 / -1; 
+        margin-right: 0px;
+        margin-bottom: 12px;
+    }
+
+    /*
+    * Acomodar botón
+    */
+    .contenedor-filtro .boton button{    
+        width: 100%;
+        margin: 0px;
+    }
+
+    /*
+     * Margen de 
+     */
+    .contenedor-filtro .exportar{
+        text-align: center;
+        margin-bottom: 24px;
     }
 }

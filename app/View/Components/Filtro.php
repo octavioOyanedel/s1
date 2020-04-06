@@ -4,19 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Tabla extends Component
+class Filtro extends Component
 {
-    public $coleccion;
-    public $tabla;  
+    public $filtro;
+    public $total;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($coleccion, $tabla)
+    public function __construct($filtro, $total)
     {
-        $this->coleccion = $coleccion;
-        $this->tabla = $tabla;        
+        $this->filtro = $filtro;
+        $this->total = $total;
     }
 
     /**
@@ -26,6 +26,6 @@ class Tabla extends Component
      */
     public function render()
     {
-        return view('components.tabla.tabla');
+        return view('components.tabla.filtro');
     }
 }

@@ -1,7 +1,7 @@
 <div>
 
 	<!--Navbar-->
-	<nav class="navbar navbar-expand-lg navbar-dark unique-color">
+	<nav class="navbar navbar-expand-xl navbar-dark unique-color">
 
 		@include('layouts.inc.nav.brand')
 

@@ -22,9 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $socios = Socio::orderBy('created_at')->paginate(10);
-        return view('home', compact('socios'));
+        $total = 1;
+        $coleccion = Socio::orderBy('created_at')->paginate(10);
+        return view('home', compact('coleccion','total'));
     }
 }

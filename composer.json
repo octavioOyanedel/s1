@@ -39,7 +39,9 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/navBarHelper.php"
+            "app/Helpers/navBarHelper.php",
+            "app/Helpers/filtroHelper.php",
+            "app/Helpers/tablaHelper.php"
         ],        
         "classmap": [
             "database/seeds",
