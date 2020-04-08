@@ -23,9 +23,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(Request $request)
-    {
-        $total = 1;
-        
+    {        
         $cantidad = obtenerCantidad($request);
         $columna = obtenerColumna($request);
         $orden = obtenerOrden($request);
@@ -39,6 +37,8 @@ class HomeController extends Controller
             'columna' => $columna,
             'orden' => $orden,
         ]);
-        return view('home', compact('coleccion','total'));
+        $total_consulta = $coleccion->total();
+        $total = Socio::all()->count();
+        return view('home', compact('coleccion','total','total_consulta'));
     }
 }

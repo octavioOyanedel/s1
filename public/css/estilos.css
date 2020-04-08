@@ -8,7 +8,7 @@
 /*
  * Tamaño de fuente
  */
-nav, input, select, option, td, li, a {
+nav, input, select, option, td, li, a, button, label {
 	font-size: 14px !important
 }
 

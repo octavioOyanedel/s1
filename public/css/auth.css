@@ -1,0 +1,43 @@
+/*
+ * Maquetación login
+ */
+.contenedor-login{
+    display: grid;
+    grid-template-columns: auto 400px auto;
+}
+
+/*
+ * Tamaño fuente componentes login
+ */
+label.recuerdame, form div.error-login, p.redes-sociales{
+    font-size: 14px !important;
+
+}
+
+/*
+ * Maquetación reset password
+ */
+.contenedor-reset{
+    display: grid;
+    grid-template-columns: auto 400px auto;
+}
+
+
+/*
+ * Media query login y reset password
+ */
+@media (max-width: 575px) {
+    /*
+     * Form login responsivo
+     */
+    .contenedor-login{
+        grid-template-columns: 20px 1fr 20px;
+    }
+
+    /*
+     * Form reset responsivo
+     */
+    .contenedor-reset{
+        grid-template-columns: 20px 1fr 20px;
+    }    
+}

@@ -10,7 +10,7 @@ function obtenerCabederasTablas($nombre)
 {
 	switch ($nombre) {
 		case "socios":
-			return array('Nombre'=>'','Género'=>'text-center','Rut'=>'text-center','Fecha Ingreso Sind1'=>'text-center','Número Socio'=>'','Correo'=>'','Anexo'=>'text-center','Celular'=>'text-center','Sede'=>'','Área'=>'','Cargo'=>'');
+			return array('Nombre'=>'','Género'=>'text-center','Rut'=>'text-center','Fecha Ingreso Sind1'=>'text-center','Número Socio'=>'text-center','Correo'=>'','Anexo'=>'text-center','Celular'=>'text-center','Sede'=>'','Área'=>'','Cargo'=>'');
 		break;	
 	}
 }

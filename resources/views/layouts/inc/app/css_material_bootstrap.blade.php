@@ -8,4 +8,5 @@
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/css/mdb.min.css" rel="stylesheet">
 <!-- Estilos personalizados -->
-<link href="{{ asset('css/estilos.css') }}" rel="stylesheet">  
+<link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+<link href="{{ asset('css/auth.css') }}" rel="stylesheet">  
