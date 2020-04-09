@@ -1,0 +1,19 @@
+/*
+ * Maquetación editar
+ */
+.contenedor-editar{
+    display: grid;
+    grid-template-columns: auto 400px auto;
+}
+
+/*
+ * Media query login y reset password
+ */
+@media (max-width: 575px) {
+    /*
+     * Form login responsivo
+     */
+    .contenedor-editar{
+        grid-template-columns: 20px 1fr 20px;
+    }
+}

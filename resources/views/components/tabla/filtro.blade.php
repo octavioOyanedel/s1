@@ -28,7 +28,7 @@
 					<option value="DESC">Desc.</option>
 				</select>		
 			</div>
-			<div class="boton"><button class="btn btn-sm btn-primary">Filtar</button></div>
+			<div class="boton"><button type="submit" class="btn btn-sm btn-primary">Filtar</button></div>
 			<!-- Complementar filtrado -->
 			<input class="form-control" type="hidden" name="campo" value="{{ Request()->campo }}"> 
 			<input class="form-control" type="hidden" name="page" value="{{ Request()->page }}"> 

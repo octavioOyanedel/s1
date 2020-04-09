@@ -1,10 +1,12 @@
 <div>
 	<!-- Dropdown usuario logeado-->
 	<li class="nav-item dropdown">
-
-		<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-		aria-haspopup="true" aria-expanded="false">{{ ucfirst($titulo)}}@if (Auth::user() != null && $titulo === 'hola'), 
-			{{ Auth::user()->nombre1 }}	@endif 
+		<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			@if($titulo === 'usuario')
+				Hola,  {{ Auth::user()->nombre1 }}
+			@else
+				{{ ucfirst($titulo)}}
+			@endif			
 		</a>
 
 		<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
@@ -20,7 +22,6 @@
 				@endif
 			@endforeach
 
-		</div>
-
+		</div>		
 	</li>
 </div>

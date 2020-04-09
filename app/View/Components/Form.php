@@ -6,14 +6,23 @@ use Illuminate\View\Component;
 
 class Form extends Component
 {
+    public $csrf;
+    public $action;
+    public $metodo;
+    public $titulo;
+    public $contenido;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($csrf, $action, $metodo, $titulo, $contenido)
     {
-        //
+       $this->csrf = $csrf; 
+       $this->action = $action;
+       $this->metodo = $metodo;
+       $this->titulo = $titulo;
+       $this->contenido = $contenido; 
     }
 
     /**

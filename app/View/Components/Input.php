@@ -19,7 +19,7 @@ class Input extends Component
      *
      * @return void
      */
-    public function __construct($tipo,$id,$nombre,$margen,$tamano,$valor,$obligatorio,$placeholder)
+    public function __construct($tipo, $id, $nombre, $margen, $tamano, $valor, $obligatorio, $placeholder)
     {
         $this->tipo = $tipo;
         $this->id = $id;

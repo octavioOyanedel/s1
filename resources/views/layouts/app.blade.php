@@ -16,8 +16,10 @@
 <body>
     <div id="app">
 
-        <x-nav-bar/>
-
+        @if (Auth::user() != null)
+            <x-nav-bar/>
+        @endif
+        
         <main class="py-4">
             @yield('content')
         </main>

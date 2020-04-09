@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="contenedor-login">
+    <div class="contenedor-editar">
 
     <!-- Contenedor formulario -->
         <div></div>
         <div>
             <!-- Default form login -->
-            <x-form metodo="post" action="login" csrf="post" titulo="Iniciar Sesión" contenido="login" />
+            
             <!-- Default form login -->
         </div>
         <div></div>
