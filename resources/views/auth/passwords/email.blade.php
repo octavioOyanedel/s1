@@ -7,7 +7,7 @@
         <div></div>
         <div>
             <!-- Default form reset -->
-            <x-form alineacion="text-center" metodo="post" action="reset" csrf="post" titulo="Recuperar Contraseña" contenido="reset" />
+            <x-form colecciones="" objetos="" alineacion="text-center" metodo="post" action="reset" csrf="post" titulo="Recuperar Contraseña" contenido="reset" />
             <!-- Default form reset -->
         </div>
         <div></div>

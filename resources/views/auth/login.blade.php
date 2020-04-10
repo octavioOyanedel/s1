@@ -7,7 +7,7 @@
         <div></div>
         <div>
             <!-- Default form login -->
-            <x-form alineacion="text-center" metodo="post" action="login" csrf="post" titulo="Iniciar Sesión" contenido="login" />
+            <x-form colecciones="" objetos="" alineacion="text-center" metodo="post" action="login" csrf="post" titulo="Iniciar Sesión" contenido="login" />
             <!-- Default form login -->
         </div>
         <div></div>

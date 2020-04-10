@@ -111,3 +111,20 @@ function obtenerObjeto($objetos, $nombre)
 	}
 }
 
+
+/**
+ * Descripción: Otorga dinámicamente di option lleva atributo selected 
+ * Entrada/s: string campo old
+ * Salida: string selected o string vacío
+ */
+function estaSelected($id, $idObjeto)
+{
+	if($id != '' && $id != null && $idObjeto != '' && $idObjeto != null){
+		if($id === $idObjeto){
+			return 'selected';
+		}
+	}
+	return '';
+}
+
+
