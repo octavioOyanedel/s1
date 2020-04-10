@@ -5,7 +5,7 @@
 @enderror
 
 <!-- Email -->
-<x-input tipo="email" nombre="email" id="email" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Correo" obligatorio="si"/>
+<x-input label="no" tipo="email" nombre="email" id="email" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Correo" obligatorio="si"/>
 
 <!-- Sign in button -->
 <button class="btn btn-info btn-block my-4" type="submit">Recuperar</button>

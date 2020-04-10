@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Privilegio;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +94,21 @@ class UserController extends Controller
     public function editar()
     {	
     	$usuario = Auth::user();
-    	return view('app.usuarios.edit', compact('usuario'));
+    	$privilegios = Privilegio::all();
+    	$colecciones = array('privilegios' => $privilegios);
+    	$objetos = array('usuario' => $usuario);
+    	return view('app.usuarios.edit', compact('usuario','objetos','colecciones'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function actualizar(Request $request)
+    {
+        dd($request);
     }
 }

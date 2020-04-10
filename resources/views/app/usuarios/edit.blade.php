@@ -6,9 +6,9 @@
     <!-- Contenedor formulario -->
         <div></div>
         <div>
-            <!-- Default form login -->
-            
-            <!-- Default form login -->
+            <!-- Default form editar usuario -->
+			<x-form :objetos="$objetos" :colecciones="$colecciones" alineacion="" metodo="post" action="user_update" csrf="put" titulo="Editar Usuario" contenido="editar_usuario" />
+            <!-- Default form editar usuario -->
         </div>
         <div></div>
         

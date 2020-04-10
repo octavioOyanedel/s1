@@ -35,8 +35,8 @@ function obtenerAction($nombre)
 	    case "reset":
 	        return 'password.email';
 	        break;
-	    case "editar_usuario":
-	        return 'usuarios';
+	    case "user_update":
+	        return 'actualizar_usuario';
 	        break;	                
 	}
 }
@@ -69,5 +69,45 @@ function obtenerContenido($nombre)
 function obtenerMetodo($nombre)
 {
 	return ($nombre === 'get') ? "GET" : "POST";
+}
+
+
+/**
+ * Descripción: Obtener valor por defecto input
+ * Entrada/s: valor old y value
+ * Salida: valor correspondiente
+ */
+function obtenerValorInput($old, $valor)
+{
+	if($old === true){
+		return $old;
+	}else{
+		return $valor;
+	}
+}
+
+
+/**
+ * Descripción: Obtener colección para poblar select
+ * Entrada/s: array asociativo de colecciones
+ * Salida: coleccion Collection
+ */
+function obtenerColeccion($colecciones, $nombre)
+{
+	if($colecciones != null){
+		return $colecciones[$nombre];
+	}	
+}
+
+/**
+ * Descripción: Obtener objetos
+ * Entrada/s: array asociativo de objetos
+ * Salida: objeto
+ */
+function obtenerObjeto($objetos, $nombre)
+{
+	if($objetos != null){
+		return $objetos[$nombre];
+	}
 }
 

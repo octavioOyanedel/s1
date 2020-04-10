@@ -5,10 +5,10 @@
 @enderror
 
 <!-- Email -->
-<x-input tipo="email" nombre="email" id="email" margen="mb-4" tamano="" valor="" placeholder="Correo" obligatorio="si"/>
+<x-input label="no" tipo="email" nombre="email" id="email" margen="mb-4" tamano="" valor="" placeholder="Correo" obligatorio="si"/>
 
 <!-- Password -->
-<x-input tipo="password" nombre="password" id="password" margen="mb-4" tamano="" valor="" placeholder="Contraseña" obligatorio="si"/>
+<x-input label="no" tipo="password" nombre="password" id="password" margen="mb-4" tamano="" valor="" placeholder="Contraseña" obligatorio="si"/>
 
 <div class="d-flex justify-content-around">
     <div>

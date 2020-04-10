@@ -11,18 +11,24 @@ class Form extends Component
     public $metodo;
     public $titulo;
     public $contenido;
+    public $alineacion;
+    public $colecciones;
+    public $objetos;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($csrf, $action, $metodo, $titulo, $contenido)
+    public function __construct($csrf, $action, $metodo, $titulo, $contenido, $alineacion, $colecciones, $objetos)
     {
-       $this->csrf = $csrf; 
-       $this->action = $action;
-       $this->metodo = $metodo;
-       $this->titulo = $titulo;
-       $this->contenido = $contenido; 
+        $this->csrf = $csrf; 
+        $this->action = $action;
+        $this->metodo = $metodo;
+        $this->titulo = $titulo;
+        $this->contenido = $contenido; 
+        $this->alineacion = $alineacion;
+        $this->colecciones = $colecciones;
+        $this->objetos = $objetos;
     }
 
     /**

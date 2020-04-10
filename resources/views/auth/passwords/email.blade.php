@@ -7,7 +7,7 @@
         <div></div>
         <div>
             <!-- Default form reset -->
-            <x-form metodo="post" action="reset" csrf="post" titulo="Recuperar Contraseña" contenido="reset" />
+            <x-form alineacion="text-center" metodo="post" action="reset" csrf="post" titulo="Recuperar Contraseña" contenido="reset" />
             <!-- Default form reset -->
         </div>
         <div></div>
