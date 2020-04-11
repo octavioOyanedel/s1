@@ -1,10 +1,16 @@
 <div>
 	<!-- label obligatorio -->
-	@if($label != 'no' && $obligatorio === 'si')
-		<label for="{{ $id }}">{{ $label }} <span title="Campo obligatorio.">*</span></label>
+	@error($nombre)
+	    <div class="error-login alert alert-danger alerta-forms" role="alert">
+	        {{ $message }}
+	    </div>
 	@else
-		<label for="{{ $id }}">{{ $label }}</label>
-	@endif	
+		@if($label != 'no' && $obligatorio === 'si')
+			<label for="{{ $id }}">{{ $label }} <span title="Campo obligatorio.">*</span></label>
+		@else
+			<label for="{{ $id }}">{{ $label }}</label>
+		@endif	   
+	@enderror
 	<!-- Select -->
 	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }}">
 		<option selected>...</option>
@@ -26,3 +32,7 @@
 		@endforeach			
 	</select>	
 </div>
+
+
+
+

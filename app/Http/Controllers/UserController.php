@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Privilegio;
 use App\User;
+use App\Privilegio;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UsuarioRequest;
 
 class UserController extends Controller
 {
+	 use CrudGenerico;
+
     /**
      * Display a listing of the resource.
      *
@@ -69,9 +73,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UsuarioRequest $request, $id)
     {
-        //
+        $this->updateGenerico($request, User::findOrFail($id));
     }
 
     /**
@@ -100,15 +104,4 @@ class UserController extends Controller
     	return view('app.usuarios.edit', compact('usuario','objetos','colecciones'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function actualizar(Request $request)
-    {
-        dd($request);
-    }
 }

@@ -36,4 +36,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    /*******************************************************************************************
+    /************************************ Métodos Estáticos ************************************
+    /*******************************************************************************************
+
+    /**
+     * Descripción: Comprobar que campo sea único y no exita repetido en tabla
+     * Entrada/s: valor del campo
+     * Salida: boolean
+     */
+    static public function esUnico($valor)
+    {
+        $campos = User::pluck('email')->all();
+        foreach ($campos as $campo) {
+            if($campo === $valor){
+                // falso ya que no es único
+                return false;
+            }
+        }
+        //verdadero ya que si es un valor único
+        return true;
+    }
+
 }

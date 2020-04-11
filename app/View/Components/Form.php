@@ -14,12 +14,14 @@ class Form extends Component
     public $alineacion;
     public $colecciones;
     public $objetos;
+    public $modulo;
+    public $tipo;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($csrf, $action, $metodo, $titulo, $contenido, $alineacion, $colecciones, $objetos)
+    public function __construct($csrf, $action, $metodo, $titulo, $contenido, $alineacion, $colecciones, $objetos, $modulo, $tipo)
     {
         $this->csrf = $csrf; 
         $this->action = $action;
@@ -29,6 +31,8 @@ class Form extends Component
         $this->alineacion = $alineacion;
         $this->colecciones = $colecciones;
         $this->objetos = $objetos;
+        $this->modulo = $modulo;
+        $this->tipo = $tipo;
     }
 
     /**

@@ -1,6 +1,11 @@
 @php
 	$usuario = obtenerObjeto($objetos, 'usuario');
 @endphp
+
+<div class="alert alert-info text-center alerta-forms" role="alert">
+	<b>*</b> Campos obligatorios.
+</div>
+
 <!-- Primer nombre -->
 <x-input label="Primer Nombre" tipo="text" nombre="nombre1" id="nombre1" margen="mb-4" tamano="form-control-sm" :valor="$usuario->nombre1" placeholder="Nombre" obligatorio="si"/>
 

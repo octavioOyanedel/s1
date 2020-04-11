@@ -8,7 +8,7 @@
 /*
  * Tamaño de fuente
  */
-nav, input, select, option, td, li, a, button, label {
+body, nav, input, select, option, td, li, a, button, label {
 	font-size: 14px !important
 }
 
@@ -101,6 +101,15 @@ table tbody tr:hover{
 .contenedor-filtro .campo,
 .contenedor-filtro .orden{
     margin-right: 5px;
+}
+
+/*
+ * estilo personalizado para alertas de formularios
+ */
+div.alerta-forms{
+    margin-bottom: 8px !important;
+    padding: 6px 8px !important;
+    font-size: 14px !important;
 }
 
 /*

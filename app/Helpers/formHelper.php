@@ -36,7 +36,7 @@ function obtenerAction($nombre)
 	        return 'password.email';
 	        break;
 	    case "user_update":
-	        return 'actualizar_usuario';
+	        return 'usuarios.update';
 	        break;	                
 	}
 }
@@ -79,7 +79,7 @@ function obtenerMetodo($nombre)
  */
 function obtenerValorInput($old, $valor)
 {
-	if($old === true){
+	if($old != null){
 		return $old;
 	}else{
 		return $valor;
@@ -120,11 +120,22 @@ function obtenerObjeto($objetos, $nombre)
 function estaSelected($id, $idObjeto)
 {
 	if($id != '' && $id != null && $idObjeto != '' && $idObjeto != null){
-		if($id === $idObjeto){
+		if(intval($id) === intval($idObjeto)){
 			return 'selected';
 		}
 	}
 	return '';
+}
+
+
+/**
+ * Descripción: Obtener id desde parametro requestUri de request
+ * Entrada/s: string requestUri
+ * Salida: int id
+ */
+function obtenerIdDesdeRequestUri($ruta)
+{
+	return intval(substr(strrchr($ruta,"/"),1));
 }
 
 

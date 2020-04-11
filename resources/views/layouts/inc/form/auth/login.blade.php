@@ -1,8 +1,3 @@
-@error('email')
-    <div class="error-login alert alert-danger" role="alert">
-        {{ $message }}
-    </div>
-@enderror
 
 <!-- Email -->
 <x-input label="no" tipo="email" nombre="email" id="email" margen="mb-4" tamano="" valor="" placeholder="Correo" obligatorio="si"/>
