@@ -104,4 +104,19 @@ class UserController extends Controller
     	return view('app.usuarios.edit', compact('usuario','objetos','colecciones'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function editarPassword()
+    {   
+        $usuario = Auth::user();
+        $privilegios = Privilegio::all();
+        $colecciones = array('privilegios' => $privilegios);
+        $objetos = array('usuario' => $usuario);
+        return view('app.usuarios.password', compact('usuario','objetos','colecciones'));
+    }
+
 }

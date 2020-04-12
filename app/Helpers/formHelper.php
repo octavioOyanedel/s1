@@ -37,7 +37,10 @@ function obtenerAction($nombre)
 	        break;
 	    case "user_update":
 	        return 'usuarios.update';
-	        break;	                
+	        break;
+	    case "password_update":
+	        return 'password.update'; 
+	        break;		        	                
 	}
 }
 
@@ -57,7 +60,10 @@ function obtenerContenido($nombre)
 	        break;	 
 	    case "editar_usuario":
 	        return 'layouts.inc.form.usuario.editar';
-	        break;	            
+	        break;	 
+	    case "cambiar_contraseña":
+	        return 'layouts.inc.form.usuario.password';
+	        break;	                   
 	}
 }
 
