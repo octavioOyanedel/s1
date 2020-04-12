@@ -34,7 +34,7 @@ class UsuarioRequest extends FormRequest
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
                 'email' => 'required|email:rfc,dns|unique:users,email', 
-                'privilegio_id' => 'required|numeric',
+                'privilegio_id' => 'required',
             ];
         }else{
             return [
@@ -43,7 +43,7 @@ class UsuarioRequest extends FormRequest
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
                 'email' => ['required','email:rfc,dns', new CampoUnicoRule(obtenerIdDesdeRequestUri(Request()->requestUri), new User)],
-                'privilegio_id' => 'required|numeric',
+                'privilegio_id' => 'required',
             ];            
         }
 

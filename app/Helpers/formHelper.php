@@ -119,6 +119,7 @@ function obtenerObjeto($objetos, $nombre)
  */
 function estaSelected($id, $idObjeto)
 {
+
 	if($id != '' && $id != null && $idObjeto != '' && $idObjeto != null){
 		if(intval($id) === intval($idObjeto)){
 			return 'selected';

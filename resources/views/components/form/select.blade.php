@@ -12,23 +12,21 @@
 		@endif	   
 	@enderror
 	<!-- Select -->
-	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }}">
-		<option selected>...</option>
+	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }}" @if ($obligatorio === 'si') required="required" @endif>
+		<option value="" selected>...</option>
 		@foreach (obtenerColeccion($colecciones, $keyColeccion) as $item)
-			
 			@if ($keyObjeto === '' && old($nombre) === null)
 				<!-- carga normal sin old o editar -->
 				<option value="{{ $item->id }}">{{ $item->nombre }}</option>
-			@else
-				@if (old($nombre) != null)
-					<!-- carga old -->
-					<option value="{{ $item->id }}" {{ estaSelected(old($nombre), obtenerObjeto($objetos, $keyObjeto)->id) }}>{{ $item->nombre }}</option>
-				@else
-					<!-- carga editar -->
-					<option value="{{ $item->id }}" {{ estaSelected($item->id, obtenerObjeto($objetos, $keyObjeto)->id) }}>{{ $item->nombre }}</option>
-				@endif
-			@endif	
-
+			@endif
+			@if (old($nombre) != null)
+				<!-- carga old -->
+				<option value="{{ $item->id }}" {{ estaSelected(old($nombre), $item->id) }}>{{ $item->nombre }}</option>
+			@endif
+			@if ($keyObjeto != '' && old($nombre) === null)
+				<!-- carga old -->
+				<option value="{{ $item->id }}" {{ estaSelected($item->id, obtenerObjeto($objetos, $keyObjeto)[$nombre]) }}>{{ $item->nombre }}</option>
+			@endif				
 		@endforeach			
 	</select>	
 </div>
