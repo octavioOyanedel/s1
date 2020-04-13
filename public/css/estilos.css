@@ -113,6 +113,13 @@ div.alerta-forms{
 }
 
 /*
+ * estilo personalizado para listas dentro de alertas de formularios
+ */
+div.alerta-forms ul{
+    margin-bottom: 0px !important;
+}
+
+/*
  * Media query boton buscar nav
  */
 @media (max-width: 575px) {

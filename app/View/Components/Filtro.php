@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class Filtro extends Component
 {
+    public $action;
     public $filtro;
     public $total;
     /**
@@ -13,8 +14,9 @@ class Filtro extends Component
      *
      * @return void
      */
-    public function __construct($filtro, $total)
+    public function __construct($action, $filtro, $total)
     {
+        $this->action = $action;
         $this->filtro = $filtro;
         $this->total = $total;
     }

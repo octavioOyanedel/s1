@@ -2,7 +2,7 @@
 	$usuario = obtenerObjeto($objetos, 'usuario');
 @endphp
 
-<div class="alert alert-info text-center alerta-forms" role="alert">
+<div class="alert alert-info alerta-forms" role="alert">
 	<b>*</b> Campos obligatorios.
 </div>
 

@@ -39,7 +39,7 @@ function obtenerAction($nombre)
 	        return 'usuarios.update';
 	        break;
 	    case "password_update":
-	        return 'password.update'; 
+	        return 'camniar_contraseña'; 
 	        break;		        	                
 	}
 }

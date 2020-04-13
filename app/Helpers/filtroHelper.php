@@ -12,7 +12,10 @@ function obtenerCamposParaFiltro($nombre)
 	switch ($nombre) {
 		case "socios":
 			return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2','Rut'=>'rut');
-		break;		
+		break;
+        case "usuarios":
+            return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2');
+        break;  	
 	}
 }
 
@@ -26,7 +29,10 @@ function obtenerCantidadesFiltro($nombre)
 	switch ($nombre) {
 		case "socios":
 			return array(5,10,20,30,50,100);
-		break;		
+		break;
+        case "usuarios":
+            return array(2,5);
+        break;  	
 	}
 }
 

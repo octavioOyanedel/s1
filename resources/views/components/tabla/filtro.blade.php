@@ -1,5 +1,5 @@
 <div>
-	<form method="GET" action="{{ route('home') }}">
+	<form method="GET" action="{{ route($action) }}">
 		<div class="contenedor-filtro mb-2">
 			<div class="exportar">
 				<a class="registros-excel text-success" title="Exportar a planilla excel" href=""><b><i class="excel fas fa-file-excel"></i> Exportar {{ $total }} Registros.</b></a>

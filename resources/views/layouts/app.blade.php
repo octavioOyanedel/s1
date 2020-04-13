@@ -19,7 +19,9 @@
         @if (Auth::user() != null)
             <x-nav-bar/>
         @endif
-        
+
+        @include('layouts.inc.mensajes.accion')
+
         <main class="py-4">
             @yield('content')
         </main>

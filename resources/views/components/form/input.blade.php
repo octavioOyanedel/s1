@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\Crypt;
+@endphp
 <div>
 		@error($nombre)
 		    <div class="error-login alert alert-danger alerta-forms" role="alert">

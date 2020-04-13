@@ -12,6 +12,9 @@ function obtenerCabederasTablas($nombre)
 		case "socios":
 			return array('Nombre'=>'','Género'=>'text-center','Rut'=>'text-center','Fecha Ingreso Sind1'=>'text-center','Número Socio'=>'text-center','Correo'=>'','Anexo'=>'text-center','Celular'=>'text-center','Sede'=>'','Área'=>'','Cargo'=>'');
 		break;	
+		case "usuarios":
+			return array('Nombre'=>'','Correo'=>'','Permisos'=>'');
+		break;	
 	}
 }
 
@@ -25,6 +28,9 @@ function obtenerRutaContenidoTabla($nombre)
 	switch ($nombre) {
 		case "socios":
 			return 'layouts.inc.socio.contenido_tabla_socios';
+		break;	
+		case "usuarios":
+			return 'layouts.inc.usuario.contenido_tabla_usuarios';
 		break;	
 	}
 }
