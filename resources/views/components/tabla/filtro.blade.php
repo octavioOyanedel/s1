@@ -2,7 +2,7 @@
 	<form method="GET" action="{{ route($action) }}">
 		<div class="contenedor-filtro mb-2">
 			<div class="exportar">
-				<a class="registros-excel text-success" title="Exportar a planilla excel" href=""><b><i class="excel fas fa-file-excel"></i> Exportar {{ $total }} Registros.</b></a>
+				<a class="registros-excel text-success" title="Exportar a planilla excel" href=""><b><i class="excel fas fa-file-excel"></i> {{ $total }} Registros.</b></a>
 			</div>
 
 			<div class="cantidad">
@@ -28,7 +28,7 @@
 					<option value="DESC">Desc.</option>
 				</select>		
 			</div>
-			<div class="boton"><button type="submit" class="btn btn-sm btn-primary">Filtar</button></div>
+			<div class="boton"><button type="submit" class="boton-filtrar btn btn-sm btn-primary">Filtrar</button></div>
 			<!-- Complementar filtrado -->
 			<input class="form-control" type="hidden" name="campo" value="{{ Request()->campo }}"> 
 			<input class="form-control" type="hidden" name="page" value="{{ Request()->page }}"> 

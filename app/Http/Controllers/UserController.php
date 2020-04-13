@@ -47,7 +47,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $privilegios = Privilegio::all();
+        $colecciones = array('privilegios' => $privilegios);
+        return view('app.usuarios.create', compact('colecciones'));
     }
 
     /**
@@ -56,9 +58,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        //
+        $request['password'] = Hash::make($request->password);
+        $this->createGenerico($request, new User);
+        return redirect('usuarios')->with('status', 'Usuario Agregado!');
     }
 
     /**

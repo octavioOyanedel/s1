@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\User;
 use App\Rules\CampoUnicoRule;
 use Illuminate\Validation\Rule;
+use App\Rules\ConfirmarPasswordRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UsuarioRequest extends FormRequest
@@ -26,14 +27,15 @@ class UsuarioRequest extends FormRequest
      */
     public function rules()
     {
-
-        if(Request()->_method === 'POST'){
+        if(Request()->method === 'POST'){
             return [
                 'nombre1' => 'required|alpha',
                 'nombre2' => 'nullable|alpha',
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
-                'email' => 'required|email:rfc,dns|unique:users,email', 
+                'email' => 'required|email:rfc,dns|unique:users,email',
+                'password' => ['required','alpha_num','min:8', new ConfirmarPasswordRule($this->confirmar)],
+                'confirmar' => 'required|alpha_num|min:8',                
                 'privilegio_id' => 'required',
             ];
         }else{

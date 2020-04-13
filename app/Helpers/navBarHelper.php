@@ -24,8 +24,8 @@ function obtenerEnlacesNav($nombre)
 		case "estadísticas":
 			return array('Sede - Área'=>'home','Comuna - Ciudad'=>'home','Cargo'=>'home','Incorporación - Desvinculación'=>'home','Nacionalidad'=>'home','Estudios'=>'home','Cargas'=>'home');
 		break;
-		case "administración":
-			return array('Socios'=>'home','Usuarios'=>'usuarios.index','Estudios'=>'home','Préstamos'=>'home','Contabilidad'=>'home','Historial'=>'home');
+		case "usuarios":
+			return array('Agregar'=>'usuarios.create','Listar'=>'usuarios.index','Historial'=>'home');
 		break;		
 	}
 }

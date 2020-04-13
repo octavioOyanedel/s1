@@ -40,7 +40,10 @@ function obtenerAction($nombre)
 	        break;
 	    case "password_update":
 	        return 'camniar_contraseña'; 
-	        break;		        	                
+	        break;	
+	    case "crear_usuario":
+	        return 'usuarios.store'; 
+	        break;	        	        	                
 	}
 }
 
@@ -63,7 +66,10 @@ function obtenerContenido($nombre)
 	        break;	 
 	    case "cambiar_contraseña":
 	        return 'layouts.inc.form.usuario.password';
-	        break;	                   
+	        break;
+	    case "crear_usuario":
+	        return 'layouts.inc.form.usuario.crear';
+	        break;		                        
 	}
 }
 

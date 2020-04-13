@@ -4,8 +4,11 @@
 <div class="ml-4 mr-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            <!-- Administración módulo -->
+            <x-nav-admin enlaces="usuarios" nombreBoton="Usuario" enlaceBoton="usuarios.create"/>
             
-            <p class="text-center h4 mb-4 mt-4"><b>Listado Usuarios</b></p>
+            <p class="h4 mb-4 mt-4"><b>Listado Usuarios</b></p>
 
             @if ($total > 0 && $total_consulta > 0)
                 <x-filtro action="usuarios.index" filtro="usuarios" :total="$total_consulta"/>

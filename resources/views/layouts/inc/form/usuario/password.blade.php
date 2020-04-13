@@ -1,14 +1,8 @@
-<div class="alert alert-info alerta-forms" role="alert">
-	<b>*</b> Campos obligatorios.
-</div>
+<!-- Mensaje campos obligatorios -->
+@include('layouts.inc.mensajes.obligatorio')
 
-<div class="alert alert-warning alerta-forms" role="alert">
-	Requisitos contraseña:
-	<ul>
-		<li>La contraseña debe poseer entre 8 y 15 caracteres.</li>
-		<li>Se permiten sólo caracteres alfanuméricos.</li>
-	</ul>
-</div>
+<!-- Mensaje descripción contraseña -->
+@include('layouts.inc.mensajes.password')
 
 <!-- Contraseña actual -->
 <x-input label="Contraseña Actual" tipo="password" nombre="actual" id="actual" margen="mb-4" tamano="form-control-sm" valor="" placeholder="" obligatorio="si"/>

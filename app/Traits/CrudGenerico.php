@@ -9,7 +9,7 @@ trait CrudGenerico {
  
     public static function createGenerico(Request $request, Object $objeto)
     {
-        $atributos = $request->except('_token','_method');
+        $atributos = $request->except('_token');
         $objeto->create($atributos);
     }
  

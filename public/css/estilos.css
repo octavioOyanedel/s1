@@ -120,6 +120,22 @@ div.alerta-forms ul{
 }
 
 /*
+ * Boton agregar
+ */
+button.boton-agregar{
+    padding: 8px 13px !important;
+    margin-right: 0px !important;
+    border-radius: 20px !important;
+}
+
+/*
+ * Boton filtrar
+ */
+button.boton-filtrar{
+    padding: 4px 15px !important;
+}
+
+/*
  * Media query boton buscar nav
  */
 @media (max-width: 575px) {

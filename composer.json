@@ -42,7 +42,8 @@
             "app/Helpers/navBarHelper.php",
             "app/Helpers/filtroHelper.php",
             "app/Helpers/tablaHelper.php",
-            "app/Helpers/formHelper.php"
+            "app/Helpers/formHelper.php",
+            "app/Helpers/adminHelper.php"
         ],        
         "classmap": [
             "database/seeds",
