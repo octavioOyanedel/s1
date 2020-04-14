@@ -43,7 +43,10 @@ function obtenerAction($nombre)
 	        break;	
 	    case "crear_usuario":
 	        return 'usuarios.store'; 
-	        break;	        	        	                
+	        break;
+	    case "crear_socio":
+	        return 'socios.store'; 
+	        break;		         	        	                
 	}
 }
 
@@ -69,7 +72,10 @@ function obtenerContenido($nombre)
 	        break;
 	    case "crear_usuario":
 	        return 'layouts.inc.form.usuario.crear';
-	        break;		                        
+	        break;
+	    case "crear_socio":
+	        return 'layouts.inc.form.socio.crear';
+	        break;		                               
 	}
 }
 

@@ -48,8 +48,33 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapUserRoutes();
 
+        $this->mapSocioRoutes();
+
+        $this->mapAjaxRoutes();
+
         //
     }
+
+    /*
+     * Rutas socios
+     */
+    protected function mapAjaxRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/ajax.php'));
+    }
+
+    /*
+     * Rutas socios
+     */
+    protected function mapSocioRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/socio.php'));
+    }   
+
     /*
      * Rutas usuarios
      */

@@ -78,6 +78,13 @@ table tbody tr:hover{
 }
 
 /*
+ * Margen selects
+ */
+select.margen-abajo{
+    margin-bottom: 24px !important;
+}
+
+/*
  * Grid filtro
  */
 .contenedor-filtro{
@@ -107,7 +114,7 @@ table tbody tr:hover{
  * estilo personalizado para alertas de formularios
  */
 div.alerta-forms{
-    margin-bottom: 8px !important;
+    margin-bottom: 24px !important;
     padding: 6px 8px !important;
     font-size: 14px !important;
 }

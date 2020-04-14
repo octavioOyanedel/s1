@@ -8,3 +8,5 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.15.0/js/mdb.min.js"></script>
 <!-- FIltro -->
 <script src="{{ asset('js/filtros.js') }}" defer></script>
+<!-- FIltro -->
+<script src="{{ asset('js/select_ajax.js') }}" defer></script>

@@ -12,7 +12,7 @@
 		@endif	   
 	@enderror
 	<!-- Select -->
-	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select {{ $tamano }}" @if ($obligatorio === 'si') required="required" @endif>
+	<select name="{{ $nombre }}" id="{{ $id }}" class="browser-default custom-select margen-abajo {{ $tamano }}" @if ($obligatorio === 'si') required="required" @endif>
 		<option value="" selected>...</option>
 		@foreach (obtenerColeccion($colecciones, $keyColeccion) as $item)
 			@if ($keyObjeto === '' && old($nombre) === null)

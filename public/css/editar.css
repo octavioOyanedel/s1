@@ -3,7 +3,7 @@
  */
 .contenedor-editar{
     display: grid;
-    grid-template-columns: auto 400px auto;
+    grid-template-columns: auto 500px auto;
 }
 
 /*
