@@ -29,7 +29,7 @@
 <x-input label="Celular" tipo="text" nombre="celular" id="celular" margen="mb-4" tamano="form-control-sm" valor="" placeholder="911223344" obligatorio="no"/>
 
 <!-- Correo -->
-<x-input label="Correo" tipo="mail" nombre="correo" id="correo" margen="mb-4" tamano="form-control-sm" valor="" placeholder="sind1@pucv.cl" obligatorio="no"/>
+<x-input label="Correo" tipo="email" nombre="correo" id="correo" margen="mb-4" tamano="form-control-sm" valor="" placeholder="sind1@pucv.cl" obligatorio="no"/>
 
 <!-- Fecha pucv -->
 <x-input label="Fecha Ingreso PUCV" tipo="date" nombre="fecha_pucv" id="fecha_pucv" margen="mb-4" tamano="form-control-sm" valor="" placeholder="01-01-2020" obligatorio="no"/>

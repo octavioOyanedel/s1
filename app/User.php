@@ -48,9 +48,9 @@ class User extends Authenticatable
      * Entrada/s: valor del campo
      * Salida: boolean
      */
-    static public function esUnico($valor)
+    static public function esUnico($valor, $atributo)
     {
-        $campos = User::pluck('email')->all();
+        $campos = User::pluck($atributo)->all();
         foreach ($campos as $campo) {
             if($campo === $valor){
                 // falso ya que no es único

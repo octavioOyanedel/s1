@@ -13,7 +13,7 @@ use App\Http\Requests\PasswordRequest;
 
 class UserController extends Controller
 {
-	 use CrudGenerico;
+	use CrudGenerico;
 
     /**
      * Display a listing of the resource.

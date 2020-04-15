@@ -37,7 +37,7 @@ class CreateSociosTable extends Migration
             $table->unsignedInteger('anexo')->nullable();
             $table->date('fecha_sind1')->nullable();
             $table->unsignedInteger('numero')->nullable();
-            $table->unsignedInteger('categoria_id'); //restrict
+            $table->unsignedInteger('categoria_id')->default(1); //restrict
             $table->softDeletes();
             $table->timestamps();
         });

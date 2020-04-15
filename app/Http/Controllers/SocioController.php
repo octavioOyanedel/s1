@@ -8,11 +8,14 @@ use App\Socio;
 use App\Comuna;
 use App\Categoria;
 use App\Ciudadania;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Http\Requests\SocioRequest;
 
 class SocioController extends Controller
 {
+    use CrudGenerico;
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +50,9 @@ class SocioController extends Controller
      */
     public function store(SocioRequest $request)
     {
-        dd($request);
+        //$request->request->add(['categoria_id' => '1']);
+        $this->createGenerico($request, new Socio);
+        return redirect('home')->with('status', 'Socio Incorporado!');
     }
 
     /**

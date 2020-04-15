@@ -13,7 +13,7 @@ class CampoUnicoRule implements Rule
      *
      * @return void
      */
-    public function __construct($id, $objeto)
+    public function __construct($id, $objeto, $nombre)
     {
         $this->id = $id;
         $this->objeto = $objeto;
@@ -34,7 +34,7 @@ class CampoUnicoRule implements Rule
         //$objeto = objeto inyectado para busqueda en base de datos
         $objeto = $this->objeto->findOrFail($this->id);
         if($value != $objeto[$attribute]){ //valor actual distinto a valor almacenado en mase de datos
-            return $objeto::esUnico($value); //crear metodo esunico en cada modelo que se invoque
+            return $objeto::esUnico($value, $attribute); //crear metodo esunico en cada modelo que se invoque
         }else{
             return true;
         }

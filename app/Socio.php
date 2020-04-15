@@ -31,5 +31,27 @@ class Socio extends Model
             return $query->orWhere('apellido1', 'LIKE', "%$campo%");
         }
     }
+
+    /*******************************************************************************************
+    /************************************ Métodos Estáticos ************************************
+    /*******************************************************************************************
+
+    /**
+     * Descripción: Comprobar que campo sea único y no exita repetido en tabla
+     * Entrada/s: valor del campo
+     * Salida: boolean
+     */
+    static public function esUnico($valor, $atributo)
+    {
+        $campos = Socio::pluck($atributo)->all();
+        foreach ($campos as $campo) {
+            if($campo === $valor){
+                // falso ya que no es único
+                return false;
+            }
+        }
+        //verdadero ya que si es un valor único
+        return true;
+    }    
 	        
 }
