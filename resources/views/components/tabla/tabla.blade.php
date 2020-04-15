@@ -1,5 +1,4 @@
 <div>
-
 	<div class="table-responsive">
 		<table class="table table-striped table-hover table-sm">
 			<thead>
@@ -15,9 +14,9 @@
 			<tbody>
 				@foreach ($coleccion as $item)
 					<tr>
-						<td class="text-center"><a title="Ver" class="p-2 text-primary" href=""><i class="fas fa-eye"></i></a></td>
-						<td class="text-center"><a title="Editar" class="p-2 text-warning" href=""><i class="fas fa-pen"></i></a></td>
-						<td class="text-center"><a title="Eliminar" class="p-2 text-danger" href=""><i class="fas fa-trash"></i></a></td>
+						<td class="text-center"><a title="Ver" class="p-2 text-primary" href="{{ route($ver, $item->id) }}"><i class="fas fa-eye"></i></a></td>
+						<td class="text-center"><a title="Editar" class="p-2 text-warning" href="{{ route($editar, $item->id) }}"><i class="fas fa-pen"></i></a></td>
+						<td class="text-center"><a title="Eliminar" class="p-2 text-danger" href="{{ route($eliminar, $item->id) }}"><i class="fas fa-trash"></i></a></td>
 						@include(obtenerRutaContenidoTabla($tabla))
 					</tr>
 				@endforeach				

@@ -5,5 +5,6 @@
 		<option value="" selected>...</option>
 
 	</select>
+	<input type="hidden" id="{{ $idEditar }}" value="{{ obtenerObjeto($objetos, $keyObjeto)[$nombre] }}">
 	<input type="hidden" id="{{ $idOld }}" value="{{ old($nombre) }}">
 </div>

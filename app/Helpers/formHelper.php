@@ -46,7 +46,9 @@ function obtenerAction($nombre)
 	        break;
 	    case "crear_socio":
 	        return 'socios.store'; 
-	        break;		         	        	                
+	        break;
+	    case "socio_update":
+	        return 'socios.update';	        	         	        	                
 	}
 }
 
@@ -75,7 +77,10 @@ function obtenerContenido($nombre)
 	        break;
 	    case "crear_socio":
 	        return 'layouts.inc.form.socio.crear';
-	        break;		                               
+	        break;
+	    case "editar_socio":
+	        return 'layouts.inc.form.socio.editar';
+	        break;	 	        	                               
 	}
 }
 

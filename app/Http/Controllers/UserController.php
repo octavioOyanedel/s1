@@ -123,7 +123,7 @@ class UserController extends Controller
     	$privilegios = Privilegio::all();
     	$colecciones = array('privilegios' => $privilegios);
     	$objetos = array('usuario' => $usuario);
-    	return view('app.usuarios.edit', compact('usuario','objetos','colecciones'));
+    	return view('app.usuarios.edit', compact('objetos','colecciones'));
     }
 
     /**

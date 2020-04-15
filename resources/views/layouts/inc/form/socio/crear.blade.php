@@ -59,7 +59,7 @@
 <x-select keyColeccion="cargos" :colecciones="$colecciones" keyObjeto="" objetos="" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>
 
 <!-- Nacionalidad -->
-<x-select keyColeccion="ciudadanias" :colecciones="$colecciones" keyObjeto="" objetos="" label="Nacionalidad" nombre="nacionalidad_id" id="nacionalidad_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>
+<x-select keyColeccion="ciudadanias" :colecciones="$colecciones" keyObjeto="" objetos="" label="Nacionalidad" nombre="ciudadania_id" id="ciudadania_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>
 
 <!-- Botón formulario -->
 <button class="btn btn-info btn-block mt-0 btn-sm" type="submit">Incorporar</button>

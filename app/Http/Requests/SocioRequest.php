@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Socio;
+use App\Rules\CampoUnicoRule;
 use App\Rules\ValidarRutRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -32,6 +34,7 @@ class SocioRequest extends FormRequest
                 'nombre2' => 'nullable|alpha',
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
+                'genero' => 'required|alpha',
                 'fecha_nac' => 'nullable|date',
                 'celular' => 'nullable|numeric',
                 'correo' => 'nullable|email:rfc,dns|unique:socios,correo',
@@ -44,7 +47,7 @@ class SocioRequest extends FormRequest
                 'sede_id' => 'required',
                 'area_id' => 'nullable',
                 'cargo_id' => 'required',
-                'nacionalidad_id' => 'required',
+                'ciudadania_id' => 'required',
             ];
         }else{
             return [
@@ -54,6 +57,7 @@ class SocioRequest extends FormRequest
                 'nombre2' => 'nullable|alpha',
                 'apellido1' => 'required|alpha',
                 'apellido2' => 'nullable|alpha',
+                'genero' => 'required|alpha',
                 'fecha_nac' => 'nullable|date',
                 'celular' => 'nullable|numeric',
                 'correo' => ['nullable','email:rfc,dns', new CampoUnicoRule(obtenerIdDesdeRequestUri(Request()->requestUri), new Socio)],
@@ -66,7 +70,7 @@ class SocioRequest extends FormRequest
                 'sede_id' => 'required',
                 'area_id' => 'nullable',
                 'cargo_id' => 'required',
-                'nacionalidad_id' => 'required',
+                'ciudadania_id' => 'required',
             ];            
         }
     }

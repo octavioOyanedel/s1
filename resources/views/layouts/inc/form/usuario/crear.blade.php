@@ -26,7 +26,7 @@
 <x-input label="Confirmar Contraseña" tipo="password" nombre="confirmar" id="confirmar" margen="mb-4" tamano="form-control-sm" valor="" placeholder="" obligatorio="si"/>
 
 <!-- Privilegio -->
-<x-select keyColeccion="privilegios" :colecciones="$colecciones" keyObjeto="" objetos="" label="Privilegio" nombre="privilegio_id" id="privilegio_id" tamano="custom-select-sm" obligatorio="si"/>
+<x-select keyColeccion="privilegios" :colecciones="$colecciones" keyObjeto="" objetos="" label="Privilegio" nombre="privilegio_id" id="privilegio_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>
 
 <!-- Botón formulario -->
 <button class="btn btn-info btn-block mt-0 btn-sm" type="submit">Crear</button>

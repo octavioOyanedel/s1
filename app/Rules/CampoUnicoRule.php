@@ -13,7 +13,7 @@ class CampoUnicoRule implements Rule
      *
      * @return void
      */
-    public function __construct($id, $objeto, $nombre)
+    public function __construct($id, $objeto)
     {
         $this->id = $id;
         $this->objeto = $objeto;

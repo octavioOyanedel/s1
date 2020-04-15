@@ -16,8 +16,13 @@
 		<option value="" selected>...</option>
 
 		@if ($excepcion === 'genero')
-			<option value="Dama" {{ estaSelected(old($nombre), 'Dama') }}>Dama</option>
-			<option value="Varón" {{ estaSelected(old($nombre), 'Varón') }}>Varón</option>
+			@if ($keyObjeto != '')
+					<option value="Dama" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'Dama') }}>Dama</option>
+					<option value="Varón" {{ estaSelected(obtenerObjeto($objetos, $keyObjeto)[$nombre], 'Varón') }}>Varón</option>
+			@else
+				<option value="Dama" {{ estaSelected(old($nombre), 'Dama') }}>Dama</option>
+				<option value="Varón" {{ estaSelected(old($nombre), 'Varón') }}>Varón</option>
+			@endif
 		@else
 			@foreach (obtenerColeccion($colecciones, $keyColeccion) as $item)
 				@if ($keyObjeto === '' && old($nombre) === null)
@@ -29,7 +34,7 @@
 					<option value="{{ $item->id }}" {{ estaSelected(old($nombre), $item->id) }}>{{ $item->nombre }}</option>
 				@endif
 				@if ($keyObjeto != '' && old($nombre) === null)
-					<!-- carga old -->
+					<!-- carga editar -->
 					<option value="{{ $item->id }}" {{ estaSelected($item->id, obtenerObjeto($objetos, $keyObjeto)[$nombre]) }}>{{ $item->nombre }}</option>
 				@endif				
 			@endforeach				

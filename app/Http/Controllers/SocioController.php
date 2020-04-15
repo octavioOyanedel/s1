@@ -50,7 +50,6 @@ class SocioController extends Controller
      */
     public function store(SocioRequest $request)
     {
-        //$request->request->add(['categoria_id' => '1']);
         $this->createGenerico($request, new Socio);
         return redirect('home')->with('status', 'Socio Incorporado!');
     }
@@ -72,9 +71,17 @@ class SocioController extends Controller
      * @param  \App\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Socio $socio)
+    public function edit($id)
     {
-        //
+        $socio = Socio::findorfail($id);
+        $comunas = Comuna::all();
+        $ciudadanias = Ciudadania::all();
+        $sedes = Sede::all();
+        $cargos = Cargo::all();
+        $categorias = Categoria::all();
+        $objetos = array('socio' => $socio);
+        $colecciones = array('comunas' => $comunas,'ciudadanias' => $ciudadanias,'sedes' => $sedes,'cargos' => $cargos,'categorias' => $categorias);
+        return view('app.socios.edit', compact('colecciones','objetos'));        
     }
 
     /**
@@ -84,9 +91,10 @@ class SocioController extends Controller
      * @param  \App\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Socio $socio)
+    public function update(SocioRequest $request, $id)
     {
-        //
+        $this->updateGenerico($request, Socio::findOrFail($id));
+        return redirect('home')->with('status', 'Socio Actualizado!');
     }
 
     /**

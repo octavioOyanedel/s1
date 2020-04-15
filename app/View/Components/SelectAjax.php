@@ -10,19 +10,25 @@ class SelectAjax extends Component
     public $id;
     public $label;
     public $idOld;
+    public $idEditar;
     public $obligatorio;
+    public $objetos;
+    public $keyObjeto;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($nombre, $id, $label, $idOld, $obligatorio)
+    public function __construct($nombre, $id, $label, $idOld, $idEditar, $obligatorio, $objetos, $keyObjeto)
     {
         $this->nombre = $nombre;
         $this->id = $id;
         $this->label = $label;
         $this->idOld = $idOld;
         $this->obligatorio = $obligatorio;
+        $this->idEditar = $idEditar;
+        $this->objetos = $objetos;
+        $this->keyObjeto = $keyObjeto;        
     }
 
     /**

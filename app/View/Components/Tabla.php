@@ -8,15 +8,21 @@ class Tabla extends Component
 {
     public $coleccion;
     public $tabla;  
+    public $ver;
+    public $editar;
+    public $eliminar;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($coleccion, $tabla)
+    public function __construct($coleccion, $tabla, $ver, $editar, $eliminar)
     {
         $this->coleccion = $coleccion;
-        $this->tabla = $tabla;        
+        $this->tabla = $tabla;
+        $this->ver = $ver; 
+        $this->editar = $editar; 
+        $this->eliminar = $eliminar;      
     }
 
     /**

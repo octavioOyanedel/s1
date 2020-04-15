@@ -16,7 +16,19 @@ $(window).on('load',function(){
 		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), $('#old_area').val());
 	}
 
-	// 1 - Agregar comprobación de valor old y llamar a petición AJAX
+	// 2 - Agregar comprobación de valor editar y llamar a petición AJAX
+	// enviar:  elemento donde se cargaran options
+	// 			nombre para elección de ruta
+	// 			valor old de select hijo
+	if(comprobarValor($('#editar_urbe').val())){
+		ajax($('#urbe_id'), 'ciudades', $('#comuna_id option:selected').val(), $('#editar_urbe').val());
+	}
+
+	if(comprobarValor($('#editar_area').val())){
+		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), $('#editar_area').val());
+	}
+
+	// 3 - llamada a ajax mientras ocurra evento chango en select padres
 	// enviar:  elemento donde se cargaran options
 	// 			nombre para elección de ruta
 	// 			valor old de select hijo
