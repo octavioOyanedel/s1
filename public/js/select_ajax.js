@@ -1,33 +1,36 @@
 $(window).on('load',function(){
 
-	//Comprobar que tipo de página se ha cargado para completar selec dinámico
-	//inmediatamente despues de carga de DOM
-	
-	//valor editar
-	var valor_comuna = $('#comuna_id option:selected').val();
-	var valor_sede = $('#sede_id option:selected').val();
+	/*
+	 * Ajax para select multiple de 2 niveles
+	 */
 
-	//old
-	var valor_old_urbe = $('#old_urbe').val();
-	var valor_old_area = $('#old_area').val();
-
-	if(comprobarValor(valor_comuna) || comprobarValor(valor_old_urbe)){
-		cargaAjax($('#urbe_id'), 'ciudades', valor_comuna)
+	// 1 - Agregar comprobación de valor old y llamar a petición AJAX
+	// enviar:  elemento donde se cargaran options
+	// 			nombre para elección de ruta
+	// 			valor old de select hijo
+	if(comprobarValor($('#old_urbe').val())){
+		ajax($('#urbe_id'), 'ciudades', $('#comuna_id option:selected').val(), $('#old_urbe').val());
 	}
 
-	if(comprobarValor(valor_sede) || comprobarValor(valor_old_area)){
-		cargaAjax($('#area_id'), 'areas', valor_sede)
+	if(comprobarValor($('#old_area').val())){
+		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), $('#old_area').val());
 	}
 
+	// 1 - Agregar comprobación de valor old y llamar a petición AJAX
+	// enviar:  elemento donde se cargaran options
+	// 			nombre para elección de ruta
+	// 			valor old de select hijo
+	$('#comuna_id').change(function(){
+		ajax($('#urbe_id'), 'ciudades', $('#comuna_id option:selected').val(), 0);
+	});
+
+	$('#sede_id').change(function(){
+		ajax($('#area_id'), 'areas', $('#sede_id option:selected').val(), 0);
+	});
 
 
 
-
-	/************************
-	 * FUNCIONES
-	 ************************/
-
-	function cargaAjax(elemento, nombre, id){
+	function ajax(elemento, nombre, id_padre, id_hijo){
 
 		$.ajaxSetup({
 			headers: {
@@ -39,26 +42,25 @@ $(window).on('load',function(){
 			method: 'GET',
 			dataType: 'json',
 			url: obtenerRuta(nombre),
-			data: {id: id},
-			success: function(respuesta){		
+			data: {id: id_padre},
+			success: function(respuesta){
 				var ids = Object.values(respuesta);
 				var nombres = Object.keys(respuesta);
 				limpiarSelect(elemento);
 				for (var i = 0; i < ids.length; i++) {
-					if(parseInt(id) === parseInt(ids[i])){
+					if(parseInt(ids[i]) === parseInt(id_hijo)){
 						elemento.append('<option value='+ids[i]+' selected>'+nombres[i]+'</option>');
 					}else{
-						elemento.append('<option value='+ids[i]+'>'+nombres[i]+'</option>');	
-					}					
+						elemento.append('<option value='+ids[i]+'>'+nombres[i]+'</option>');
+					}
 				}
 			},
 			error: function(respuesta){
 				console.log('error');
 			}
-		});
+		});		
+
 	}
-
-
 
 	function comprobarValor(valor) {
 		if(valor === ''){
