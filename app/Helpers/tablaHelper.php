@@ -15,6 +15,9 @@ function obtenerCabederasTablas($nombre)
 		case "usuarios":
 			return array('Nombre'=>'','Correo'=>'','Permisos'=>'');
 		break;	
+		case "prestamos":
+			return array('Rut'=>'','Fecha'=>'','N° Egreso'=>'','Cuenta'=>'','Forma Pago'=>'','N° Egreso'=>'','Cheque'=>'','Monto'=>'');
+		break;	
 	}
 }
 
@@ -31,6 +34,9 @@ function obtenerRutaContenidoTabla($nombre)
 		break;	
 		case "usuarios":
 			return 'layouts.inc.usuario.contenido_tabla_usuarios';
+		break;
+		case "prestamos":
+			return 'layouts.inc.prestamo.contenido_tabla_prestamos';
 		break;	
 	}
 }

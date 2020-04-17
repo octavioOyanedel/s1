@@ -44,7 +44,7 @@
 <x-select keyColeccion="comunas" :colecciones="$colecciones" keyObjeto="" objetos="" label="Comuna" nombre="comuna_id" id="comuna_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>
 
 <!-- Ciudad -->
-<x-select-ajax nombre="urbe_id" id="urbe_id" label="Ciudad" idOld="old_urbe" obligatorio="no"/>
+<x-select-ajax keyObjeto="" objetos="" nombre="urbe_id" id="urbe_id" label="Ciudad" idOld="old_urbe" idEditar="" obligatorio="no"/>
 
 <!-- Dirección -->
 <x-input label="Dirección" tipo="text" nombre="direccion" id="direccion" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Av. Brasil 2950" obligatorio="no"/>
@@ -53,7 +53,7 @@
 <x-select keyColeccion="sedes" :colecciones="$colecciones" keyObjeto="" objetos="" label="Sede" nombre="sede_id" id="sede_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>
 
 <!-- Área -->
-<x-select-ajax nombre="area_id" id="area_id" label="Área" idOld="old_area" obligatorio="no"/>
+<x-select-ajax keyObjeto="" objetos="" nombre="area_id" id="area_id" label="Área" idOld="old_area" idEditar="" obligatorio="no"/>
 
 <!-- Cargo -->
 <x-select keyColeccion="cargos" :colecciones="$colecciones" keyObjeto="" objetos="" label="Cargo" nombre="cargo_id" id="cargo_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>

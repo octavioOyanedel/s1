@@ -48,7 +48,11 @@ function obtenerAction($nombre)
 	        return 'socios.store'; 
 	        break;
 	    case "socio_update":
-	        return 'socios.update';	        	         	        	                
+	        return 'socios.update';
+	        break;
+	    case "crear_prestamo":
+	        return 'simular'; 
+	        break;	              	         	        	                
 	}
 }
 
@@ -80,9 +84,30 @@ function obtenerContenido($nombre)
 	        break;
 	    case "editar_socio":
 	        return 'layouts.inc.form.socio.editar';
-	        break;	 	        	                               
+	        break;
+	    case "crear_prestamo":
+	        return 'layouts.inc.form.prestamo.crear';
+	        break;		        	        	                               
 	}
 }
+
+
+/**
+ * Descripción: Obtener nombre de campo para mostrar registro
+ * Entrada/s: String nombre 
+ * Salida: comentario
+ */
+function obtenerNombreRegistro($objeto, $nombre)
+{
+	switch ($nombre) {
+	    case "banca_id":
+	        return $objeto->numero;
+	        break;
+	    default:
+	        return $objeto->nombre;	        	        	                               
+	}
+}
+
 
 /**
  * Descripción: Obtener método de formulario

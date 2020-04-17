@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Rutas de Socio
+| Rutas de Prestamo
 |--------------------------------------------------------------------------
 */
 
-Route::resource('/socios', 'SocioController');
+Route::resource('/prestamos', 'PrestamoController');
+Route::post('/simular', 'PrestamoController@simular')->name('simular');

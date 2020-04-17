@@ -15,7 +15,10 @@ function obtenerCamposParaFiltro($nombre)
 		break;
         case "usuarios":
             return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2');
-        break;  	
+        break;
+        case "prestamos":
+            return array('Numero'=>'numero','Cheque'=>'cheque');
+        break;  
 	}
 }
 
@@ -32,7 +35,10 @@ function obtenerCantidadesFiltro($nombre)
 		break;
         case "usuarios":
             return array(2,5);
-        break;  	
+        break;
+        case "prestamos":
+            return array(5,10,20,30,50);
+        break;  
 	}
 }
 

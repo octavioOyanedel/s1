@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'nombre1' => 'Osvaldo',
             'nombre2' => 'Valentín',
             'apellido1' => 'León',
-            'apellido2' => 'montenegro',
+            'apellido2' => 'Montenegro',
             'email' => 'osvaldo.leon@pucv.cl',
 	        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
 	        'privilegio_id' => 3,

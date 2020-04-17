@@ -42,6 +42,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
+        $this->mapPrestamoRoutes();
+
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
@@ -56,7 +58,17 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /*
-     * Rutas socios
+     * Rutas préstamos
+     */
+    protected function mapPrestamoRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/prestamo.php'));
+    }
+
+    /*
+     * Rutas ajax
      */
     protected function mapAjaxRoutes()
     {

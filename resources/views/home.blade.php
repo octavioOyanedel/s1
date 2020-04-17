@@ -6,7 +6,7 @@
         <div class="col-md-12">
 
             <!-- Administración módulo -->
-            <x-nav-admin enlaces="socios" nombreBoton="Socio" enlaceBoton="home"/>
+            <x-nav-admin enlaces="socios" nombreBoton="Socio" enlaceBoton="socios.create"/>
            
             <p class="h4 mb-4 mt-4"><b>Listado Socios</b></p>
 
