@@ -33,11 +33,15 @@
 			@endif
 			@if (old($nombre) != null)
 				<!-- carga old -->
-				<option value="{{ $i }}" {{ estaSelected(old($nombre), $i) }}>{{ $i }}</option> 
+				@for ($i = 1; $i <= 24; $i++)
+					<option value="{{ $i }}" {{ estaSelected(old($nombre), $i) }}>{{ $i }}</option>
+				@endfor
 			@endif
 			@if ($keyObjeto != '' && old($nombre) === null)
 				<!-- carga editar -->
-				<option value="{{ $i }}" {{ estaSelected($i, obtenerObjeto($objetos, $keyObjeto)[$nombre]) }}>{{ $i }}</option>
+				@for ($i = 1; $i <= 24; $i++)
+					<option value="{{ $i }}" {{ estaSelected($i, obtenerObjeto($objetos, $keyObjeto)[$nombre]) }}>{{ $i }}</option>
+				@endfor
 			@endif			
 
 		@else

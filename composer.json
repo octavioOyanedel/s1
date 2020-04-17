@@ -43,7 +43,8 @@
             "app/Helpers/filtroHelper.php",
             "app/Helpers/tablaHelper.php",
             "app/Helpers/formHelper.php",
-            "app/Helpers/adminHelper.php"
+            "app/Helpers/adminHelper.php",
+            "app/Helpers/prestamoHelper.php"
         ],        
         "classmap": [
             "database/seeds",

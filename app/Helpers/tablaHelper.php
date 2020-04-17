@@ -22,6 +22,23 @@ function obtenerCabederasTablas($nombre)
 }
 
 /**
+ * Descripción: obtener cabeceras y su respectiva clase de aliniamiento
+ * Entrada/s: string nombre de tabla
+ * Salida: arreglo asociativo con nombre y clase
+ */
+function obtenerCabederasTablasVistas($nombre)
+{
+	switch ($nombre) {
+		case "prestamo":
+			return array('Fecha'=>'fecha','N° Egreso'=>'registro','Cuenta'=>'banca_id','Forma Pago'=>'metodo_id','Cheque'=>'cheque','Monto'=>'monto','Fecha Pago'=>'fecha_pago','Cuotas'=>'cuotas');
+		break;
+		case "cuotas":
+			return array('N° Cuota'=>'numero','Fecha Pago'=>'fecha','Monto'=>'monto');
+		break;		
+	}
+}
+
+/**
  * Descripción: obtener ruta para carga dinámica de ncontenido tabla
  * Entrada/s: string nombre de enlace
  * Salida: arreglo asociativo con nombre y clase

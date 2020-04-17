@@ -10,7 +10,7 @@ function obtenerEnlacesAdmin($nombre)
 {
 	switch ($nombre) {
 		case "socios":
-			return array('Área'=>'home','Cargo'=>'home','Estado'=>'home','Nacionalidad'=>'home','Sede'=>'home');
+			return array('Área'=>'home','Cargo'=>'home','Ciudad'=>'home','Comuna'=>'home','Estado'=>'home','Nacionalidad'=>'home','Sede'=>'home');
 		break;	
 		case "usuarios":
 			return array('Permisos'=>'home');

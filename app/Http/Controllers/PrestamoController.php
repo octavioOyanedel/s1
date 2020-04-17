@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Banca;
+use App\Socio;
 use App\Metodo;
 use App\Prestamo;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
 use App\Http\Requests\PrestamoRequest;
+
 
 class PrestamoController extends Controller
 {
@@ -115,6 +117,16 @@ class PrestamoController extends Controller
      */
     public function simular(PrestamoRequest $request)
     {
-        dd($request);
+        $socio = Socio::obtenerSociConRut($request->rut);
+        $prestamo = new Prestamo;
+        $prestamo->fill($request->toArray());
+        $prestamo->fill(['socio_id'=>$socio->id]);
+        $cuotas = null;
+        if($prestamo->cuotas != null){
+            $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
+            dd($cuotas);
+        }
+        return view('app.prestamos.simular', compact('prestamo','cuotas','socio'));
     }
+    
 }

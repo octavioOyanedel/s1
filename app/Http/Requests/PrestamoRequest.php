@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Http\Request;
 use App\Rules\ValidarRutRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,30 +24,16 @@ class PrestamoRequest extends FormRequest
      */
     public function rules()
     {
-        if(Request()->method === 'POST'){
-            return [
-                'rut' => ['required','alpha_num', new ValidarRutRule],
-                'fecha' => 'nullable|date',
-                'numero' => 'required|numeric',
-                'banca_id' => 'required',
-                'metodo_id' => 'required',
-                'cheque' => 'required|numeric'
-                'monto' => 'required|numeric'
-                'fecha_pago' => 'nullable',
-                'cuotas' => 'nullable',
-            ];
-        }else{
-            return [
-                'rut' => ['required','alpha_num', new ValidarRutRule],
-                'fecha' => 'nullable|date',
-                'numero' => 'required|numeric',
-                'banca_id' => 'required',
-                'metodo_id' => 'required',
-                'cheque' => 'required|numeric'
-                'monto' => 'required|numeric'
-                'fecha_pago' => 'nullable',
-                'cuotas' => 'nullable',
-            ];            
-        }
+        return [
+            'rut' => ['required','exists:socios','alpha_num', new ValidarRutRule],
+            'fecha' => 'nullable|date',
+            'registro' => 'required|numeric',
+            'banca_id' => 'required',
+            'metodo_id' => 'required',
+            'cheque' => 'required|numeric',
+            'monto' => 'required|numeric',
+            'fecha_pago' => 'nullable',
+            'cuotas' => 'nullable',
+        ];    
     }
 }

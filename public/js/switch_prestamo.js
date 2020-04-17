@@ -2,6 +2,20 @@ $(window).on('load',function(){
 
 	ocultarTodo();
 	var valor = null;
+	var old_pago = $('#metodo_id option:selected').val();
+
+	if(old_pago != ''){
+		switch(old_pago) {
+			case '1':
+				obligatorio($('#cuotas')); //elemento 
+				mostrar($('.cuotas')); // contenedor
+			break;
+			case '2':
+				obligatorio($('#fecha_pago')); //elemento
+				mostrar($('.fecha-pago')); // contenedor
+			break;
+		}
+	}
 
 	$('#metodo_id').change(function(){
 		valor = $('#metodo_id option:selected').val();

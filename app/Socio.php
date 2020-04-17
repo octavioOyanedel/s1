@@ -52,6 +52,16 @@ class Socio extends Model
         }
         //verdadero ya que si es un valor único
         return true;
+    }
+
+    /**
+     * Descripción: Obtener id socio dado un rut
+     * Entrada/s: string rut
+     * Salida: socio
+     */
+    static public function obtenerSociConRut($rut)
+    {
+        return Socio::where('rut','=',$rut)->first();
     }    
 	        
 }

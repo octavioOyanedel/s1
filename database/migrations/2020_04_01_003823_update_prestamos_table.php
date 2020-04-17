@@ -19,6 +19,8 @@ class UpdatePrestamosTable extends Migration
             $table->foreign('renta_id')->references('id')->on('rentas')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('estado_id')->references('id')->on('estados')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('tipo_id')->references('id')->on('tipos')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('socio_id')->references('id')->on('socios')->onUpdate('cascade')->onDelete('restrict');
+
         });
     }
 

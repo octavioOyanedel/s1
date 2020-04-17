@@ -8,7 +8,7 @@
 <x-input label="Fecha Solicitud" tipo="date" nombre="fecha" id="fecha" margen="mb-4" tamano="form-control-sm" valor="" placeholder="01-01-2020" obligatorio="si"/>
 
 <!-- Numero de egreso -->
-<x-input label="N° Egreso" tipo="text" nombre="numero" id="numero" margen="mb-4" tamano="form-control-sm" valor="" placeholder="123" obligatorio="si"/>
+<x-input label="N° Egreso" tipo="text" nombre="registro" id="registro" margen="mb-4" tamano="form-control-sm" valor="" placeholder="123" obligatorio="si"/>
 
 <!-- Cuenta -->
 <x-select keyColeccion="cuentas" :colecciones="$colecciones" keyObjeto="" objetos="" label="Cuenta" nombre="banca_id" id="banca_id" tamano="custom-select-sm" obligatorio="si" excepcion=""/>

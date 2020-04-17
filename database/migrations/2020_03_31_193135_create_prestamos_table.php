@@ -28,6 +28,7 @@ class CreatePrestamosTable extends Migration
             $table->unsignedInteger('estado_id'); //restrict
             $table->date('fecha_pago')->nullable();
             $table->unsignedInteger('tipo_id')->default(1); //restrict
+            $table->unsignedInteger('socio_id');
             $table->timestamps();
         });
     }
