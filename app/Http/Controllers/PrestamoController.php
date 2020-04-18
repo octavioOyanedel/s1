@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Banca;
 use App\Cuota;
+use App\Renta;
 use App\Socio;
 use App\Metodo;
 use App\Prestamo;
@@ -50,7 +51,8 @@ class PrestamoController extends Controller
     {
         $cuentas = Banca::all();
         $metodos = Metodo::all();
-        $colecciones = array('cuentas' => $cuentas,'metodos' => $metodos);
+        $intereses = Renta::all();
+        $colecciones = array('cuentas' => $cuentas,'metodos' => $metodos,'intereses' => $intereses);
         return view('app.prestamos.create', compact('colecciones'));
     }
 
@@ -90,9 +92,15 @@ class PrestamoController extends Controller
      * @param  \App\Prestamo  $prestamo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prestamo $prestamo)
+    public function edit($id)
     {
-        //
+        $prestamo = Prestamo::findOrFail($id);
+        $cuentas = Banca::all();
+        $metodos = Metodo::all();
+        $intereses = Renta::all();
+        $colecciones = array('cuentas' => $cuentas,'metodos' => $metodos,'intereses' => $intereses);
+        $objetos = array('prestamo' => $prestamo);
+        return view('app.prestamos.edit', compact('objetos','colecciones'));    
     }
 
     /**
@@ -102,9 +110,33 @@ class PrestamoController extends Controller
      * @param  \App\Prestamo  $prestamo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prestamo $prestamo)
+    public function update(PrestamoRequest $request, $id)
     {
-        //
+        // Comprobar tipo de cambio
+        // D.P.P a DEP.
+            // Si existen cuotas pagadas
+                // Calcular remanente
+                // Eliminar cuotas 
+                // Modificar monto
+                // Modificar forma de pago
+            // Si no exisisten cuotas pagadas
+                // Eliminar cuotas 
+                // Modificar monto
+                // Modificar forma de pago
+        // DEP. a D.P.P.
+            // Si existe abono
+                // Calcular remanente
+                // Agregar cuotas 
+                // Modificar monto
+                // Modificar forma de pago
+            // Si no existe abono
+                // Agregar cuotas 
+                // Modificar monto
+                // Modificar forma de pago  
+        // Camnio de cuotas REP.  
+            // Calcular remanente
+            // Agregar nuevas cuotas 
+            // Modificar monto
     }
 
     /**

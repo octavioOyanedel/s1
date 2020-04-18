@@ -52,7 +52,10 @@ function obtenerAction($nombre)
 	        break;
 	    case "crear_prestamo":
 	        return 'simular'; 
-	        break;	              	         	        	                
+	        break;
+	    case "prestamo_update":
+	        return 'prestamos.update'; 
+	        break;	  	               	         	        	                
 	}
 }
 
@@ -87,7 +90,10 @@ function obtenerContenido($nombre)
 	        break;
 	    case "crear_prestamo":
 	        return 'layouts.inc.form.prestamo.crear';
-	        break;		        	        	                               
+	        break;
+	    case "editar_prestamo":
+	        return 'layouts.inc.form.prestamo.editar';
+	        break;		             	        	                               
 	}
 }
 
@@ -103,6 +109,9 @@ function obtenerNombreRegistro($objeto, $nombre)
 	    case "banca_id":
 	        return $objeto->numero;
 	        break;
+	    case "renta_id":
+	        return $objeto->valor;
+	        break;	     
 	    default:
 	        return $objeto->nombre;	        	        	                               
 	}
