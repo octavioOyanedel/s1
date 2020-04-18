@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class TablaVista extends Component
+class TablaVistaVertical extends Component
 {
     public $tabla;
     public $coleccion;
@@ -16,7 +16,7 @@ class TablaVista extends Component
     public function __construct($tabla, $coleccion)
     {
         $this->tabla = $tabla;
-        $this->coleccion = $coleccion;
+        $this->coleccion = $coleccion;    
     }
 
     /**
@@ -26,6 +26,6 @@ class TablaVista extends Component
      */
     public function render()
     {
-        return view('components.tabla.tabla-vista');
+        return view('components.tabla.tabla-vista-vertical');
     }
 }

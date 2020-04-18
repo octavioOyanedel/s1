@@ -11,10 +11,8 @@ class EstadosTableSeeder extends Seeder
      */
     public function run()
     {
+        App\Estado::create(['nombre' => 'Pagado']);
         App\Estado::create(['nombre' => 'Activo']);
-        App\Estado::create(['nombre' => 'Jubilado']);
-        App\Estado::create(['nombre' => 'Renuncia Voluntaria']);
-        App\Estado::create(['nombre' => 'Desvinculación PUCV']);
-        App\Estado::create(['nombre' => 'Fallecido']);
+        App\Estado::create(['nombre' => 'Atrasado']);
     }
 }

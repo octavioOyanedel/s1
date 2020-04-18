@@ -29,10 +29,13 @@ function obtenerCabederasTablas($nombre)
 function obtenerCabederasTablasVistas($nombre)
 {
 	switch ($nombre) {
-		case "prestamo":
+		case "socio_prestamo":
+			return array('Nombre'=>'nombre','Rut'=>'rut');
+		break;		
+		case "prestamo_vista_v":
 			return array('Fecha'=>'fecha','N° Egreso'=>'registro','Cuenta'=>'banca_id','Forma Pago'=>'metodo_id','Cheque'=>'cheque','Monto'=>'monto','Fecha Pago'=>'fecha_pago','Cuotas'=>'cuotas');
 		break;
-		case "cuotas":
+		case "prestamo_vista_h":
 			return array('N° Cuota'=>'numero','Fecha Pago'=>'fecha','Monto'=>'monto');
 		break;		
 	}
@@ -54,6 +57,15 @@ function obtenerRutaContenidoTabla($nombre)
 		break;
 		case "prestamos":
 			return 'layouts.inc.prestamo.contenido_tabla_prestamos';
-		break;	
+		break;
+		case "prestamo_vista_v":
+			return 'layouts.inc.prestamo.contenido_tabla_vista_v_prestamos';
+		break;
+		case "prestamo_vista_h":
+			return 'layouts.inc.prestamo.contenido_tabla_vista_h_prestamos';
+		break;
+		case "socio_prestamo":
+			return 'layouts.inc.prestamo.contenido_tabla_prestamo_socio';
+		break;				
 	}
 }

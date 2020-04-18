@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banca;
+use App\Cuota;
 use App\Socio;
 use App\Metodo;
 use App\Prestamo;
@@ -61,7 +62,15 @@ class PrestamoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->createGenerico($request, new Prestamo);
+        $prestamo = Prestamo::obtenerUltimo();
+        //1 - obtener prestamo almacenado
+        //2 - comprobar si existen cuotas, ssi guardar cuotas
+        if($request->cuotas != null && $request->cuotas > 0){
+            Cuota::agregarCuotasPrestamo($prestamo);
+        }
+        //3 - almacenar registro contable
+        return redirect('prestamos')->with('status', 'Préstamo Registrado!');
     }
 
     /**
@@ -124,7 +133,7 @@ class PrestamoController extends Controller
         $cuotas = null;
         if($prestamo->cuotas != null){
             $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
-            dd($cuotas);
+            //dd($cuotas[0]);
         }
         return view('app.prestamos.simular', compact('prestamo','cuotas','socio'));
     }

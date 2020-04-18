@@ -24,10 +24,10 @@ class CreatePrestamosTable extends Migration
             $table->unsignedInteger('monto');
             $table->unsignedInteger('cuotas')->nullable();
             $table->unsignedInteger('metodo_id'); //restrict
-            $table->unsignedInteger('renta_id'); //restrict
-            $table->unsignedInteger('estado_id'); //restrict
+            $table->unsignedInteger('renta_id')->default(1); //restrict
+            $table->unsignedInteger('estado_id')->default(2); //restrict 2 activo
             $table->date('fecha_pago')->nullable();
-            $table->unsignedInteger('tipo_id')->default(1); //restrict
+            $table->unsignedInteger('tipo_id')->default(1); //restrict 1 egreso
             $table->unsignedInteger('socio_id');
             $table->timestamps();
         });

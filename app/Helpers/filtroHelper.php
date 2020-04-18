@@ -17,7 +17,7 @@ function obtenerCamposParaFiltro($nombre)
             return array('1° Nombre'=>'nombre1','2° Nombre'=>'nombre2','Apellido Pat.'=>'apellido1','Apellido Mat.'=>'apellido2');
         break;
         case "prestamos":
-            return array('Numero'=>'numero','Cheque'=>'cheque');
+            return array('Numero'=>'registro','Cheque'=>'cheque');
         break;  
 	}
 }
