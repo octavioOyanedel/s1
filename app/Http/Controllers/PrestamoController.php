@@ -112,6 +112,12 @@ class PrestamoController extends Controller
      */
     public function update(PrestamoRequest $request, $id)
     {
+        $objeto = new Prestamo;
+        //dd($request->except('_token','_method'));
+        dd($objeto->fill($request->except('_token','_method')));
+
+
+        
         // metodo_id 1 D.P.P. 2 DEP
         $prestamo = Prestamo::findOrFail($id);
         // Comprobar tipo de cambio
@@ -134,11 +140,11 @@ class PrestamoController extends Controller
                     $nuevo_monto = $prestamo->monto - $prestamo->abono;
                     $request['monto'] = $nuevo_monto;
                     $request['fecha_pago'] = null;
-                    Cuota::agregarCuotasPrestamo($prestamo);
+                    Cuota::agregarCuotasPrestamo($request);
                     $this->updateGenerico($request, $prestamo);
                     return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
                 }else{
-                    Cuota::agregarCuotasPrestamo($prestamo);
+                    Cuota::agregarCuotasPrestamo($request);
                     $this->updateGenerico($request, $prestamo);
                     return redirect('prestamos')->with('status', 'Prestamo Actualizado!');   
                 }
