@@ -112,7 +112,54 @@ class PrestamoController extends Controller
      */
     public function update(PrestamoRequest $request, $id)
     {
+        // metodo_id 1 D.P.P. 2 DEP
+        $prestamo = Prestamo::findOrFail($id);
         // Comprobar tipo de cambio
+        if($prestamo->getOriginal('metodo_id') != $request->metodo_id){
+            if($request->metodo_id === '2'){
+                if(Prestamo::cuotasPagadas($prestamo) != 0){
+                    $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);
+                    $request['monto'] = $nuevo_monto;
+                    $request['cuotas'] = null;
+                    Prestamo::eliminarCuotas($prestamo);
+                    $this->updateGenerico($request, $prestamo);
+                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
+                }else{
+                    Prestamo::eliminarCuotas($prestamo);
+                    $this->updateGenerico($request, $prestamo);
+                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');  
+                }
+            }else{
+                if($prestamo->abono != null){
+                    $nuevo_monto = $prestamo->monto - $prestamo->abono;
+                    $request['monto'] = $nuevo_monto;
+                    $request['fecha_pago'] = null;
+                    Cuota::agregarCuotasPrestamo($prestamo);
+                    $this->updateGenerico($request, $prestamo);
+                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
+                }else{
+                    Cuota::agregarCuotasPrestamo($prestamo);
+                    $this->updateGenerico($request, $prestamo);
+                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');   
+                }
+            }
+        }
+        if($prestamo->cuotas != $request->cuotas){
+            if(Prestamo::cuotasPagadas($prestamo) != 0){
+                $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);
+                $request['monto'] = $nuevo_monto;
+                $request['cuotas'] = null;
+                Prestamo::eliminarCuotas($prestamo);
+                $this->updateGenerico($request, $prestamo);
+                return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
+            }else{
+                Prestamo::eliminarCuotas($prestamo);
+                $this->updateGenerico($request, $prestamo);
+                return redirect('prestamos')->with('status', 'Prestamo Actualizado!');  
+            }
+        }
+        $this->updateGenerico($request, $prestamo);
+        return redirect('prestamos')->with('status', 'Prestamo Actualizado!');
         // D.P.P a DEP.
             // Si existen cuotas pagadas
                 // Calcular remanente
