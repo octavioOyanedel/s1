@@ -112,84 +112,52 @@ class PrestamoController extends Controller
      */
     public function update(PrestamoRequest $request, $id)
     {
+//dd($request);
+        // Se crea préstamo con datos de request
         $objeto = new Prestamo;
-        //dd($request->except('_token','_method'));
-        dd($objeto->fill($request->except('_token','_method')));
+        $objeto->fill(['id'=>$id]);
+        $objeto->fill($request->except('_token','_method'));
+        //dd($objeto);
 
-
-        
         // metodo_id 1 D.P.P. 2 DEP
         $prestamo = Prestamo::findOrFail($id);
-        // Comprobar tipo de cambio
+        $nuevo_monto = $request->monto;
+
+        // Si hay cambio de metodo
         if($prestamo->getOriginal('metodo_id') != $request->metodo_id){
-            if($request->metodo_id === '2'){
+            // DPP a DEP
+            if($request->metodo_id === '2'){                
+                // Si hay cuotas pagadas
                 if(Prestamo::cuotasPagadas($prestamo) != 0){
-                    $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);
-                    $request['monto'] = $nuevo_monto;
-                    $request['cuotas'] = null;
-                    Prestamo::eliminarCuotas($prestamo);
-                    $this->updateGenerico($request, $prestamo);
-                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
-                }else{
-                    Prestamo::eliminarCuotas($prestamo);
-                    $this->updateGenerico($request, $prestamo);
-                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');  
+                    //dd('hay cuotas pagadas');
+                    $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);                
                 }
+                //dd('no hay cuotas pagadas');
+                $request['cuotas'] = null;  
+                Prestamo::eliminarCuotas($prestamo);
+            // DEP a DPP
             }else{
+                // Si hay abono
                 if($prestamo->abono != null){
                     $nuevo_monto = $prestamo->monto - $prestamo->abono;
-                    $request['monto'] = $nuevo_monto;
-                    $request['fecha_pago'] = null;
-                    Cuota::agregarCuotasPrestamo($request);
-                    $this->updateGenerico($request, $prestamo);
-                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
-                }else{
-                    Cuota::agregarCuotasPrestamo($request);
-                    $this->updateGenerico($request, $prestamo);
-                    return redirect('prestamos')->with('status', 'Prestamo Actualizado!');   
                 }
+                $request['fecha_pago'] = null;
+
+                Cuota::agregarCuotasPrestamo($objeto);  
             }
         }
+        // Si hay cambio de cuotas "repactaciones"
         if($prestamo->cuotas != $request->cuotas){
             if(Prestamo::cuotasPagadas($prestamo) != 0){
                 $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);
-                $request['monto'] = $nuevo_monto;
-                $request['cuotas'] = null;
-                Prestamo::eliminarCuotas($prestamo);
-                $this->updateGenerico($request, $prestamo);
-                return redirect('prestamos')->with('status', 'Prestamo Actualizado!');                    
-            }else{
-                Prestamo::eliminarCuotas($prestamo);
-                $this->updateGenerico($request, $prestamo);
-                return redirect('prestamos')->with('status', 'Prestamo Actualizado!');  
+                $request['cuotas'] = null;                             
             }
+            Prestamo::eliminarCuotas($prestamo); 
+            Cuota::agregarCuotasPrestamo($objeto); 
         }
+        $request['monto'] = $nuevo_monto;
         $this->updateGenerico($request, $prestamo);
         return redirect('prestamos')->with('status', 'Prestamo Actualizado!');
-        // D.P.P a DEP.
-            // Si existen cuotas pagadas
-                // Calcular remanente
-                // Eliminar cuotas 
-                // Modificar monto
-                // Modificar forma de pago
-            // Si no exisisten cuotas pagadas
-                // Eliminar cuotas 
-                // Modificar monto
-                // Modificar forma de pago
-        // DEP. a D.P.P.
-            // Si existe abono
-                // Calcular remanente
-                // Agregar cuotas 
-                // Modificar monto
-                // Modificar forma de pago
-            // Si no existe abono
-                // Agregar cuotas 
-                // Modificar monto
-                // Modificar forma de pago  
-        // Camnio de cuotas REP.  
-            // Calcular remanente
-            // Agregar nuevas cuotas 
-            // Modificar monto
     }
 
     /**
@@ -218,7 +186,6 @@ class PrestamoController extends Controller
         $cuotas = null;
         if($prestamo->cuotas != null){
             $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
-            //dd($cuotas[0]);
         }
         return view('app.prestamos.simular', compact('prestamo','cuotas','socio'));
     }

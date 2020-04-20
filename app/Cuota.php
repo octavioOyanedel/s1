@@ -37,10 +37,10 @@ class Cuota extends Model
      */
     static public function agregarCuotasPrestamo(Prestamo $prestamo)
     {
-        //dd($prestamo);
+
         $cuotas = $prestamo->cuotas;
-        $fecha = $prestamo->getOriginal('fecha');
-        $monto = $prestamo->getOriginal('monto');
+        $fecha = $prestamo->fecha;
+        $monto = $prestamo->monto;
         $dia_pago = 25;
         $year_pago = 0;
         $year_inicio = 0;

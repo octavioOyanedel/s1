@@ -14,7 +14,7 @@ trait CrudGenerico {
     }
  
     public static function updateGenerico(Request $request, Object $objeto)
-    {
+    {       
         $atributos = $request->except('_token','_method');
         $objeto->update($atributos);
     }
