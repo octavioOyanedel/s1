@@ -35,9 +35,9 @@ class Cuota extends Model
      * Entrada/s: prestamo de tipo Prestamo
      * Salida: boolean
      */
-    static public function agregarCuotasPrestamo(Prestamo $prestamo)
+    static public function agregarCuotasPrestamo(Prestamo $prestamo, $tipo)
     {
-
+        //dd((int)$prestamo->renta->valor);
         $cuotas = $prestamo->cuotas;
         $fecha = $prestamo->fecha;
         $monto = $prestamo->monto;
@@ -47,8 +47,13 @@ class Cuota extends Model
         $mes_inicio = 0;
         $fecha_cuota = '';
         $array_fecha_cuota = array();
-        $montoConInteres = ((2 / 100) * $monto) + $monto;
-        $montoCouta = $montoConInteres / $cuotas;
+        if($tipo === 'con_interes'){
+            $montoCalculado = (((int)$prestamo->renta->valor / 100) * $monto) + $monto;
+        }else{
+            $montoCalculado = $monto;
+        }
+        
+        $montoCouta = $montoCalculado / $cuotas;
 
         //obtener año, mes y dia
         $year = substr($fecha,0,-6);

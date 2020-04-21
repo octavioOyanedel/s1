@@ -6,7 +6,7 @@
 @include('layouts.inc.mensajes.obligatorio')
 
 <!-- Rut -->
-<x-input label="Rut" tipo="text" nombre="rut" id="rut" margen="mb-4" tamano="form-control-sm" :valor="$prestamo->socio_id" placeholder="11222333k" obligatorio="si"/>
+<x-input label="Rut" tipo="text" nombre="rut" id="rut" margen="mb-4" tamano="form-control-sm" :valor="$prestamo->socio->rut" placeholder="11222333k" obligatorio="si"/>
 
 <!-- Fecha solicitud -->
 <x-input label="Fecha Solicitud" tipo="date" nombre="fecha" id="fecha" margen="mb-4" tamano="form-control-sm" :valor="$prestamo->fecha" placeholder="01-01-2020" obligatorio="si"/>

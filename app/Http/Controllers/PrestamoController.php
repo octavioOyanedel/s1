@@ -69,7 +69,7 @@ class PrestamoController extends Controller
         //1 - obtener prestamo almacenado
         //2 - comprobar si existen cuotas, ssi guardar cuotas
         if($request->cuotas != null && $request->cuotas > 0){
-            Cuota::agregarCuotasPrestamo($prestamo);
+            Cuota::agregarCuotasPrestamo($prestamo,'con_interes');
         }
         //3 - almacenar registro contable
         return redirect('prestamos')->with('status', 'Préstamo Registrado!');
@@ -113,27 +113,22 @@ class PrestamoController extends Controller
     public function update(PrestamoRequest $request, $id)
     {
 //dd($request);
-        // Se crea préstamo con datos de request
-        $objeto = new Prestamo;
-        $objeto->fill(['id'=>$id]);
-        $objeto->fill($request->except('_token','_method'));
-        //dd($objeto);
-
-        // metodo_id 1 D.P.P. 2 DEP
         $prestamo = Prestamo::findOrFail($id);
         $nuevo_monto = $request->monto;
+
+        // Crear Prestamo con valores recibidos en $request
+        $objeto = new Prestamo;
+        $objeto->fill(['id'=>$id,'monto'=>$nuevo_monto]);
+        $objeto->fill($request->except('_token','_method'));
 
         // Si hay cambio de metodo
         if($prestamo->getOriginal('metodo_id') != $request->metodo_id){
             // DPP a DEP
             if($request->metodo_id === '2'){                
-                // Si hay cuotas pagadas
+               // Si hay cuotas pagadas
                 if(Prestamo::cuotasPagadas($prestamo) != 0){
-                    //dd('hay cuotas pagadas');
-                    $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);                
+                      $nuevo_monto = Prestamo::sumaTotalCuotas($prestamo) - Prestamo::sumarCuotasPagadas($prestamo);                
                 }
-                //dd('no hay cuotas pagadas');
-                $request['cuotas'] = null;  
                 Prestamo::eliminarCuotas($prestamo);
             // DEP a DPP
             }else{
@@ -141,20 +136,21 @@ class PrestamoController extends Controller
                 if($prestamo->abono != null){
                     $nuevo_monto = $prestamo->monto - $prestamo->abono;
                 }
-                $request['fecha_pago'] = null;
+                $objeto['monto'] = $nuevo_monto;
+                Cuota::agregarCuotasPrestamo($objeto,'con_interes');                 
+            }
+        }else{
+            // Si hay cambio de cuotas "repactaciones"
+            if($prestamo->cuotas != $request->cuotas && $request->cuotas != null){
+                if(Prestamo::cuotasPagadas($prestamo) != 0){
+                    $nuevo_monto = Prestamo::sumaTotalCuotas($prestamo) - Prestamo::sumarCuotasPagadas($prestamo);
+                }
+                Prestamo::eliminarCuotas($prestamo);
+                $objeto['monto'] = $nuevo_monto;             
+                Cuota::agregarCuotasPrestamo($objeto,'con_interes'); 
+            }            
+        }
 
-                Cuota::agregarCuotasPrestamo($objeto);  
-            }
-        }
-        // Si hay cambio de cuotas "repactaciones"
-        if($prestamo->cuotas != $request->cuotas){
-            if(Prestamo::cuotasPagadas($prestamo) != 0){
-                $nuevo_monto = $prestamo->monto - Prestamo::sumarCuotasPagadas($prestamo);
-                $request['cuotas'] = null;                             
-            }
-            Prestamo::eliminarCuotas($prestamo); 
-            Cuota::agregarCuotasPrestamo($objeto); 
-        }
         $request['monto'] = $nuevo_monto;
         $this->updateGenerico($request, $prestamo);
         return redirect('prestamos')->with('status', 'Prestamo Actualizado!');
