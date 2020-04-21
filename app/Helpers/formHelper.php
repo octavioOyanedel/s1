@@ -55,7 +55,10 @@ function obtenerAction($nombre)
 	        break;
 	    case "prestamo_update":
 	        return 'prestamos.update'; 
-	        break;	  	               	         	        	                
+	        break;
+	    case "abonar":
+	        return 'abonar'; 
+	        break;		                      	         	        	                
 	}
 }
 
@@ -93,7 +96,10 @@ function obtenerContenido($nombre)
 	        break;
 	    case "editar_prestamo":
 	        return 'layouts.inc.form.prestamo.editar';
-	        break;		             	        	                               
+	        break;
+	    case "abonar":
+	        return 'layouts.inc.form.prestamo.abonar';
+	        break;		        	             	        	                               
 	}
 }
 

@@ -10,6 +10,7 @@ use App\Metodo;
 use App\Prestamo;
 use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\AbonarRequest;
 use App\Http\Requests\PrestamoRequest;
 
 
@@ -112,7 +113,6 @@ class PrestamoController extends Controller
      */
     public function update(PrestamoRequest $request, $id)
     {
-//dd($request);
         $prestamo = Prestamo::findOrFail($id);
         $nuevo_monto = $request->monto;
 
@@ -184,6 +184,17 @@ class PrestamoController extends Controller
             $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
         }
         return view('app.prestamos.simular', compact('prestamo','cuotas','socio'));
+    }
+
+    /**
+     * Form abonar a depósito.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function agregarAbono()
+    {
+        return view('app.prestamos.abonar');
     }
     
 }
