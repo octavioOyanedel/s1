@@ -14,5 +14,6 @@ class EstadosTableSeeder extends Seeder
         App\Estado::create(['nombre' => 'Pagado']);
         App\Estado::create(['nombre' => 'Activo']);
         App\Estado::create(['nombre' => 'Atrasado']);
+        App\Estado::create(['nombre' => 'Anulado']);
     }
 }

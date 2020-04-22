@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Abono;
 use App\Cuota;
 use App\Renta;
 use App\Socio;
+use App\Estado;
 use Illuminate\Database\Eloquent\Model;
 
 class Prestamo extends Model
@@ -50,8 +52,25 @@ class Prestamo extends Model
     {
         return $this->belongsTo('App\Renta');
     }
+
+    /**
+     * Relación belongsTo
+     * Esta/e préstamo pertenece a un/a estado
+     */
+    public function estado()
+    {
+        return $this->belongsTo('App\Estado');
+    }
     
-   
+    /**
+     * Relación belongsTo
+     * Esta/e préstamo pertenece a un/a abono
+     */
+    public function abonos()
+    {
+        return $this->hasMany('App\Abono');
+    }   
+
     /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************
     /******************************************************************************************/
@@ -84,6 +103,16 @@ class Prestamo extends Model
     static public function sumarCuotasPagadas(Prestamo $prestamo)
     {
         return $prestamo->cuotas()->where('estado_id','=','1')->sum('monto');
+    }
+
+    /**
+    * Descripción: Obtener suma total de abonos para préstamo
+    * Entrada/s: Prestamo $prestamo
+    * Salida: int suma o cero
+    */
+    static public function sumarAbonos(Prestamo $prestamo)
+    {
+        return $prestamo->abonos()->where('prestamo_id','=',$prestamo->id)->sum('monto');
     }
 
     /**

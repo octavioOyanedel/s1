@@ -16,7 +16,7 @@ function obtenerCabederasTablas($nombre)
 			return array('Nombre'=>'','Correo'=>'','Permisos'=>'');
 		break;	
 		case "prestamos":
-			return array('Rut'=>'','Fecha'=>'','N° Egreso'=>'','Cuenta'=>'','Forma Pago'=>'','N° Egreso'=>'','Cheque'=>'','Monto'=>'');
+			return array('Estado'=>'','Rut'=>'','Fecha'=>'','N° Egreso'=>'','Cuenta'=>'','Forma Pago'=>'','N° Egreso'=>'','Cheque'=>'','Monto'=>'');
 		break;	
 	}
 }

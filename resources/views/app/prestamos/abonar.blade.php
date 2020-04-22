@@ -7,7 +7,7 @@
         <div></div>
         <div>
             <!-- Default form abonar -->
-			<x-form tipo="" objetos="" modulo="" colecciones="" alineacion="" metodo="post" action="abonar" csrf="post" titulo="Abonar Monto" contenido="abonar" />
+			<x-form tipo="editar" :objetos="$objetos" modulo="prestamo" :colecciones="$colecciones" alineacion="" metodo="post" action="abonar" csrf="post" titulo="Abonar Monto" contenido="abono" />
             <!-- Default form abonar -->
         </div>
         <div></div>

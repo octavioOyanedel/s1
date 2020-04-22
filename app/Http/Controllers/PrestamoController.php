@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Abono;
 use App\Banca;
 use App\Cuota;
 use App\Renta;
@@ -133,7 +134,7 @@ class PrestamoController extends Controller
             // DEP a DPP
             }else{
                 // Si hay abono
-                if($prestamo->abono != null){
+                if(Prestamo::sumarAbonos($prestamo) > 0){
                     $nuevo_monto = $prestamo->monto - $prestamo->abono;
                 }
                 $objeto['monto'] = $nuevo_monto;
@@ -192,9 +193,25 @@ class PrestamoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function agregarAbono()
+    public function abono(Request $request)
     {
-        return view('app.prestamos.abonar');
+        $prestamo = Prestamo::findOrFail($request->id);
+        $socio = Socio::obtenerSociConRut($prestamo->socio->rut);
+        $objetos = array('prestamo' => $prestamo,'socio' => $socio);
+        $abonos = Abono::all();
+        $colecciones = array('abonos' => $abonos);
+        $total = Prestamo::sumarAbonos($prestamo);
+        return view('app.prestamos.abonar', compact('objetos','colecciones'));
     }
-    
+
+    /**
+     * Form abonar a depósito.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function abonar(Request $request)
+    {
+        dd($request);
+    }
 }

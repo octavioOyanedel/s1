@@ -1,3 +1,4 @@
+<td>{{ $item->estado->nombre }}</td>
 <td class="text-center">{{ $item->socio_id }}</td>
 <td class="text-center">{{ $item->fecha }}</td>
 <td class="text-center">{{ $item->registro }}</td>

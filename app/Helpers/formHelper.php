@@ -97,7 +97,7 @@ function obtenerContenido($nombre)
 	    case "editar_prestamo":
 	        return 'layouts.inc.form.prestamo.editar';
 	        break;
-	    case "abonar":
+	    case "abono":
 	        return 'layouts.inc.form.prestamo.abonar';
 	        break;		        	             	        	                               
 	}
