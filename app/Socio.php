@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Area;
+use App\Sede;
+use App\Cargo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -34,7 +37,7 @@ class Socio extends Model
 
     /*******************************************************************************************
     /************************************ Métodos Estáticos ************************************
-    /*******************************************************************************************
+    /******************************************************************************************/
 
     /**
      * Descripción: Comprobar que campo sea único y no exita repetido en tabla
@@ -63,5 +66,49 @@ class Socio extends Model
     {
         return Socio::where('rut','=',$rut)->first();
     }    
+
+    /*******************************************************************************************
+    /************************************ Accessors ********************************************
+    /******************************************************************************************/
+
+    /**
+     * Descripción: Obtener rut formateado
+     * Entrada/s: string rut
+     * Salida: string rut formateado 11.222.333-k
+     */
+    public function getRutAttribute($value)
+    {
+        return formatoRut($value);
+    }
+
+    /**
+     * Descripción: Obtener nombre sede
+     * Entrada/s: int id
+     * Salida: string nombre
+     */
+    public function getSedeIdAttribute($value)
+    {
+        return Sede::findOrFail($value)->nombre;
+    }
+
+    /**
+     * Descripción: Obtener nombre área
+     * Entrada/s: int id
+     * Salida: string nombre
+     */
+    public function getAreaIdAttribute($value)
+    {
+        return Area::findOrFail($value)->nombre;
+    }
+
+    /**
+     * Descripción: Obtener nombre cargo
+     * Entrada/s: int id
+     * Salida: string nombre
+     */
+    public function getCargoIdAttribute($value)
+    {
+        return Cargo::findOrFail($value)->nombre;
+    }        
 	        
 }

@@ -84,13 +84,17 @@ class PrestamoController extends Controller
      */
     public function show($id)
     {
-        $prestamo = Prestamo::findOrFail($id);
-        $socio = Socio::obtenerSociConRut($prestamo->socio->rut);
+        $prestamo = Prestamo::findOrFail($id);     
+        //dd($prestamo);   
+        $socio = Socio::findOrFail($prestamo->socio_id);
         $cuotas = null;
+        $total = $prestamo->monto;
         if($prestamo->cuotas != null){
-            $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
-        }
-        return view('app.prestamos.show', compact('socio','prestamo','cuotas'));
+            $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->getRawOriginal('monto'));
+
+            $total = Prestamo::sumaTotalCuotas($prestamo);
+        }        
+        return view('app.prestamos.show', compact('socio','prestamo','cuotas','total'));
     }
 
     /**
@@ -188,8 +192,9 @@ class PrestamoController extends Controller
         $prestamo->fill($request->toArray());
         $prestamo->fill(['socio_id'=>$socio->id]);
         $cuotas = null;
+        dd($prestamo);
         if($prestamo->cuotas != null){
-            $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
+            $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->getRawOriginal('monto'));
         }
         return view('app.prestamos.simular', compact('prestamo','cuotas','socio'));
     }

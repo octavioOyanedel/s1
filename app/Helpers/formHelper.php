@@ -116,7 +116,7 @@ function obtenerNombreRegistro($objeto, $nombre)
 	        return $objeto->numero;
 	        break;
 	    case "renta_id":
-	        return $objeto->valor;
+	        return $objeto->valor.'%';
 	        break;	     
 	    default:
 	        return $objeto->nombre;	        	        	                               

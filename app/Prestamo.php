@@ -3,10 +3,13 @@
 namespace App;
 
 use App\Abono;
+use App\Banca;
+use App\Banco;
 use App\Cuota;
 use App\Renta;
 use App\Socio;
 use App\Estado;
+use App\Metodo;
 use Illuminate\Database\Eloquent\Model;
 
 class Prestamo extends Model
@@ -133,5 +136,50 @@ class Prestamo extends Model
     static public function eliminarCuotas(Prestamo $prestamo)
     {
         return $prestamo->cuotas()->delete();
-    }       
+    }
+
+    /*******************************************************************************************
+    /************************************ Accessors ********************************************
+    /******************************************************************************************/
+
+    /**
+     * Descripción: Obtener cuenta formateada
+     * Entrada/s: int id
+     * Salida: string cuenta
+     */
+    public function getBancaIdAttribute($value)
+    {
+        $banca = Banca::findOrFail($value);
+        return Cuenta::findOrfail($banca->cuenta_id)->nombre.' N° '.$banca->numero.' '.Banco::findOrfail($banca->banco_id)->nombre;
+    }
+
+    /**
+     * Descripción: Obtener forma de pago
+     * Entrada/s: int id
+     * Salida: string cuenta
+     */
+    public function getMetodoIdAttribute($value)
+    {
+        return Metodo::findOrfail($value)->nombre;
+    }
+
+    /**
+     * Descripción: Obtener valor formateado
+     * Entrada/s: int valor
+     * Salida: string valor formateado $50.000
+     */
+    public function getMontoAttribute($value)
+    {
+        return formatoMoneda($value);
+    }    
+
+    /**
+     * Descripción: Interés formateado
+     * Entrada/s: int id
+     * Salida: string valor formateado 2%
+     */
+    public function getRentaIdAttribute($value)
+    {
+        return Renta::findOrFail($value)->valor.'%';
+    }      
 }

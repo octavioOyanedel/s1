@@ -8,15 +8,17 @@ class TablaVistaHorizontal extends Component
 {
     public $tabla;
     public $coleccion;
+    public $total;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($tabla, $coleccion)
+    public function __construct($tabla, $coleccion, $total)
     {
         $this->tabla = $tabla;
-        $this->coleccion = $coleccion; 
+        $this->coleccion = $coleccion;
+        $this->total = $total;         
     }
 
     /**

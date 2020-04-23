@@ -127,6 +127,13 @@ div.alerta-forms ul{
 }
 
 /*
+ * ancho de columna de tabla
+ */
+th.ancho-columna{
+    width: 150px !important;
+}
+
+/*
  * Boton agregar
  */
 button.boton-agregar{

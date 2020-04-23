@@ -4,14 +4,22 @@
 			<thead>
 				<tr>
 					@foreach (obtenerCabederasTablasVistas($tabla) as $cabecera => $nombre)
-						<th class="text-center"><b>{{ $cabecera }}</b></th>
+						@if ($cabecera === 'N° Cuota')
+							<th class="text-center ancho-columna"><b>{{ $cabecera }}</b></th>
+						@else
+							<th class="text-center"><b>{{ $cabecera }}</b></th>
+						@endif						
 					@endforeach		
 				</tr>			
 			</thead>
 			<tbody>
 				@foreach ($coleccion as $index => $cuota)
 					@include(obtenerRutaContenidoTabla($tabla))
-				@endforeach						
+				@endforeach	
+				<tr>
+					<th class="text-right" colspan="2"><b>Total</b></th>
+					<td class="text-center">{{ $total }}</td>
+				</tr>										
 			</tbody>
 		</table>
 	</div>

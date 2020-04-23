@@ -48,7 +48,7 @@ class Cuota extends Model
         $fecha_cuota = '';
         $array_fecha_cuota = array();
         if($tipo === 'con_interes'){
-            $montoCalculado = (((int)$prestamo->renta->valor / 100) * $monto) + $monto;
+            $montoCalculado = (((int)$prestamo->renta->getRawOriginal('valor') / 100) * $monto) + $monto;
         }else{
             $montoCalculado = $monto;
         }

@@ -7,6 +7,7 @@
  */
 function crearArregloCuotas($numero_cuotas, $fecha_solicitud, $monto)
 {
+    dd($monto);
     $cuotas = $numero_cuotas;
     $fecha = $fecha_solicitud;
     $dia_pago = 25;

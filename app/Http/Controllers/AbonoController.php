@@ -116,15 +116,5 @@ class AbonoController extends Controller
         $total = Prestamo::sumarAbonos($prestamo);
         return view('app.prestamos.abonar', compact('objetos','colecciones'));
     }
-
-    /**
-     * Form abonar a depósito.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function abonar(Request $request)
-    {
-        dd($request);
-    }    
+  
 }
