@@ -54,6 +54,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAjaxRoutes();
 
+        $this->mapAbonoRoutes();
+
         //
     }
 
@@ -96,6 +98,16 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/user.php'));
     }    
+
+    /*
+     * Rutas usuarios
+     */
+    protected function mapAbonoRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/abono.php'));
+    }      
 
     /**
      * Define the "web" routes for the application.

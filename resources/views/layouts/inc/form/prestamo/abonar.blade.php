@@ -16,5 +16,8 @@
 <!-- Monto -->
 <x-input label="Monto a Abonar" tipo="text" nombre="monto" id="monto" margen="mb-4" tamano="form-control-sm" valor="" placeholder="Ej. 40000" obligatorio="si"/>
 
+<input type="hidden" name="fecha_solicitud" value="{{ $prestamo->fecha }}">
+<input type="hidden" name="prestamo_id" value="{{ $prestamo->id }}">
+
 <!-- Botón formulario -->
 <button class="btn btn-info btn-block mt-0 btn-sm" type="submit">Abonar</button>

@@ -57,7 +57,7 @@ function obtenerAction($nombre)
 	        return 'prestamos.update'; 
 	        break;
 	    case "abonar":
-	        return 'abonar'; 
+	        return 'abonos.store'; 
 	        break;		                      	         	        	                
 	}
 }

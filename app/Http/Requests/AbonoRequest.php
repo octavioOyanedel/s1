@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MontoRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AbonarRequest extends FormRequest
+class AbonoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class AbonarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,10 @@ class AbonarRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'fecha' => 'required|date|after:fecha_solicitud',
+            'monto' => ['required','numeric', new MontoRule(Request()->prestamo_id)],
+            'fecha_solicitud' => 'required|date',
+            'prestamo_id' => 'required',
         ];
     }
 }

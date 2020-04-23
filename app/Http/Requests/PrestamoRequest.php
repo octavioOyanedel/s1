@@ -32,7 +32,7 @@ class PrestamoRequest extends FormRequest
             'metodo_id' => 'required',
             'cheque' => 'required|numeric',
             'monto' => 'required|numeric',
-            'fecha_pago' => 'nullable',
+            'fecha_pago' => 'nullable|date|after:fecha',
             'cuotas' => 'nullable',
         ];    
     }

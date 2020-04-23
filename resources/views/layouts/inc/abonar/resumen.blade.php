@@ -64,7 +64,7 @@
 	</div>
 @else
 	<div class="alert alert-warning text-center" role="alert">
-	    <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Prestamo sin abonos.
+	    <i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;&nbsp;&nbsp;Préstamo sin abonos.
 	</div>
 @endif
 

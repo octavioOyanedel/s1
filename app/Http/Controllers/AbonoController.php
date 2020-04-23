@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Abono;
+use App\Socio;
+use App\Prestamo;
+use App\Traits\CrudGenerico;
 use Illuminate\Http\Request;
+use App\Http\Requests\AbonoRequest;
 
 class AbonoController extends Controller
 {
+    use CrudGenerico;
+
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +39,20 @@ class AbonoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AbonoRequest $request)
     {
-        //
+        $prestamo = Prestamo::findOrFail($request->prestamo_id);
+        $suma = Prestamo::sumarAbonos($prestamo);
+        if($prestamo->monto - ($suma + $request->monto) === 0){
+            // Pagar préstamo
+            // Preparar Request con datos de prestamo
+            $prestamo->estado_id = 1; // 1 préstamo pagado
+            $prestamo->update();
+            $this->createGenerico($request, new Abono);
+            return redirect('prestamos')->with('status', 'Prestamo Pagado!');
+        }
+        $this->createGenerico($request, new Abono);
+        return redirect('prestamos')->with('status', 'Abono Agregado!');
     }
 
     /**
@@ -82,4 +99,32 @@ class AbonoController extends Controller
     {
         //
     }
+
+    /**
+     * Form abonar a depósito.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function abono(Request $request)
+    {
+        $prestamo = Prestamo::findOrFail($request->id);
+        $socio = Socio::obtenerSociConRut($prestamo->socio->rut);
+        $objetos = array('prestamo' => $prestamo,'socio' => $socio);
+        $abonos = Abono::all();
+        $colecciones = array('abonos' => $abonos);
+        $total = Prestamo::sumarAbonos($prestamo);
+        return view('app.prestamos.abonar', compact('objetos','colecciones'));
+    }
+
+    /**
+     * Form abonar a depósito.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function abonar(Request $request)
+    {
+        dd($request);
+    }    
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Abono;
 use App\Banca;
 use App\Cuota;
 use App\Renta;
@@ -187,31 +186,5 @@ class PrestamoController extends Controller
         return view('app.prestamos.simular', compact('prestamo','cuotas','socio'));
     }
 
-    /**
-     * Form abonar a depósito.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function abono(Request $request)
-    {
-        $prestamo = Prestamo::findOrFail($request->id);
-        $socio = Socio::obtenerSociConRut($prestamo->socio->rut);
-        $objetos = array('prestamo' => $prestamo,'socio' => $socio);
-        $abonos = Abono::all();
-        $colecciones = array('abonos' => $abonos);
-        $total = Prestamo::sumarAbonos($prestamo);
-        return view('app.prestamos.abonar', compact('objetos','colecciones'));
-    }
 
-    /**
-     * Form abonar a depósito.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function abonar(Request $request)
-    {
-        dd($request);
-    }
 }

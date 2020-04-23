@@ -26,7 +26,7 @@
 						@switch($tabla)
 						    @case('prestamos')
 						    	<td class="text-center">
-							    	@if ($item->metodo_id === 2)
+							    	@if ($item->metodo_id === 2 && $item->estado_id === 2)
 										<a title="Abonar" class="p-2 text-success" href="{{ route($abonar, ['id'=>$item->id]) }}"><i class="fas fa-money-bill-alt"></i></a>
 							    	@endif
 						    	</td>
