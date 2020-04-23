@@ -82,9 +82,15 @@ class PrestamoController extends Controller
      * @param  \App\Prestamo  $prestamo
      * @return \Illuminate\Http\Response
      */
-    public function show(Prestamo $prestamo)
+    public function show($id)
     {
-        //
+        $prestamo = Prestamo::findOrFail($id);
+        $socio = Socio::obtenerSociConRut($prestamo->socio->rut);
+        $cuotas = null;
+        if($prestamo->cuotas != null){
+            $cuotas = crearArregloCuotas($prestamo->cuotas, $prestamo->fecha, $prestamo->monto);
+        }
+        return view('app.prestamos.show', compact('socio','prestamo','cuotas'));
     }
 
     /**
@@ -153,7 +159,7 @@ class PrestamoController extends Controller
 
         $request['monto'] = $nuevo_monto;
         $this->updateGenerico($request, $prestamo);
-        return redirect('prestamos')->with('status', 'Prestamo Actualizado!');
+        return redirect('prestamos')->with('status', 'Préstamo Actualizado!');
     }
 
     /**
@@ -162,9 +168,11 @@ class PrestamoController extends Controller
      * @param  \App\Prestamo  $prestamo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prestamo $prestamo)
+    public function destroy($id)
     {
-        //
+        $prestamo = Prestamo::findOrFail($id);
+        $this->deleteGenerico($prestamo);
+        return redirect('prestamos')->with('status', 'Préstamo Eliminado!');
     }
 
     /**

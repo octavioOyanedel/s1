@@ -20,14 +20,31 @@
 			<tbody>
 				@foreach ($coleccion as $item)
 					<tr>
-						<td class="text-center"><a title="Ver" class="p-2 text-primary" href="{{ route($ver, $item->id) }}"><i class="fas fa-eye"></i></a></td>
-						<td class="text-center"><a title="Editar" class="p-2 text-warning" href="{{ route($editar, $item->id) }}"><i class="fas fa-pen"></i></a></td>
-						<td class="text-center"><a title="Eliminar" class="p-2 text-danger" href="{{ route($eliminar, $item->id) }}"><i class="fas fa-trash"></i></a></td>
+						<td class="text-center">
+							<a title="Ver" class="p-2 text-primary" href="{{ route($ver, $item->id) }}">
+								<i class="fas fa-eye"></i>
+							</a>
+						</td>
+						<td class="text-center">
+							<a title="Editar" class="p-2 text-warning" href="{{ route($editar, $item->id) }}">
+								<i class="fas fa-pen"></i>
+							</a>
+						</td>
+						<!-- data-target permite distinguir modal -->
+						<td class="text-center">
+							<a title="Eliminar" class="p-2 text-danger" data-toggle="modal" data-target="#ventanaModal{{ $item->id }}">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
+						<!-- Ventana modal  -->
+						<x-modal :id="$item->id" titulo="Eliminar Préstamo" csrf="delete" action="prestamos.destroy" eliminar="este préstamo"/>
 						@switch($tabla)
 						    @case('prestamos')
 						    	<td class="text-center">
-							    	@if ($item->metodo_id === 2 && $item->estado_id === 2)
-										<a title="Abonar" class="p-2 text-success" href="{{ route($abonar, ['id'=>$item->id]) }}"><i class="fas fa-money-bill-alt"></i></a>
+							    	@if ($item->metodo_id === 2 && $item->estado_id === 2) <!-- 2 depósito - 2 activo -->
+										<a title="Abonar" class="p-2 text-success" href="{{ route($abonar, ['id'=>$item->id]) }}">
+											<i class="fas fa-money-bill-alt"></i>
+										</a>
 							    	@endif
 						    	</td>
 						        @break

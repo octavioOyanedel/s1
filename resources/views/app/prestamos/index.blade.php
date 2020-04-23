@@ -13,7 +13,7 @@
             @if ($total > 0 && $total_consulta > 0)
                 <x-filtro action="prestamos.index" filtro="prestamos" :total="$total_consulta"/>
                 <!-- Tabla listar usuarios -->
-                <x-tabla :coleccion="$coleccion" tabla="prestamos" ver="home" editar="prestamos.edit" eliminar="home" abonar="abono" estado="home"/>
+                <x-tabla :coleccion="$coleccion" tabla="prestamos" ver="prestamos.show" editar="prestamos.edit" eliminar="home" abonar="abono" estado="home"/>
                 <!-- Tabla listar usuarios -->
             @else
                 <div class="alert alert-warning text-center" role="alert">
@@ -23,6 +23,5 @@
             
         </div>
     </div>
-
 </div>
 @endsection
